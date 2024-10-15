@@ -1,0 +1,20 @@
+nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  nav a {
+    margin: 5px 0;
+  }
+  
+  .sekcia_zmena {
+    transition: font-size 0.3s ease;
+  }
+  
+  .sekcia_zmena:hover {
+    font-size: 1.1em;
+  }
+  
+  img {
+    transform: scale(0.9);
+  }
