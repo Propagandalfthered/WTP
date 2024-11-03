@@ -1,93 +1,51 @@
-// responsive.js
-
-// Responsive CSS Loader and Theme Toggle
-class ResponsiveCSSLoader {
+class ThemeManager {
     constructor() {
-        this.breakpoints = {
-            mobile: 700,
-            tablet: 900,
-            desktop: 1300,
-            large: 1600
-        };
-
-        this.cssFiles = {
-            mobile: 'css/style-700px.css',
-            tablet: 'css/style-900px.css',
-            desktop: 'css/style-1300px.css',
-            large: 'css/style-1600px.css'
-        };
-
-        this.currentBreakpoint = null;
+        this.init();
     }
 
-    getCurrentBreakpoint() {
-        const width = window.innerWidth;
+    toggleTheme() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-        if (width <= this.breakpoints.mobile) return 'mobile';
-        if (width <= this.breakpoints.tablet) return 'tablet';
-        if (width <= this.breakpoints.desktop) return 'desktop';
-        return 'large';
-    }
-
-    loadCSS() {
-        const breakpoint = this.getCurrentBreakpoint();
-
-        if (breakpoint === this.currentBreakpoint) return;
-
-        this.currentBreakpoint = breakpoint;
-
-        const cssLink = document.getElementById('responsive-css');
-        if (cssLink) {
-            cssLink.href = this.cssFiles[breakpoint];
-        } else {
-            const link = document.createElement('link');
-            link.id = 'responsive-css';
-            link.rel = 'stylesheet';
-            link.href = this.cssFiles[breakpoint];
-            document.head.appendChild(link);
-        }
-
-        window.dispatchEvent(new CustomEvent('breakpointChanged', {
-            detail: { breakpoint }
+        window.dispatchEvent(new CustomEvent('themeChanged', {
+            detail: { theme: isDark ? 'dark' : 'light' }
         }));
+
+        const themeToggle = document.getElementById('theme-switcher');
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+        }
     }
 
     init() {
-        this.loadCSS();
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
 
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                this.loadCSS();
-            }, 250);
-        });
+        const themeToggle = document.getElementById('theme-switcher');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
 
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                this.loadCSS();
-            }, 100);
+            const isDark = document.documentElement.classList.contains('dark');
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+        }
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        prefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.classList.toggle('dark', e.matches);
+
+                const themeToggle = document.getElementById('theme-switcher');
+                if (themeToggle) {
+                    themeToggle.setAttribute('aria-label', e.matches ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+                }
+            }
         });
     }
-}
-
-// Dark Theme Toggle Functionality
-function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Set the initial theme based on saved preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    }
-
-    // Add event listener to theme toggle button
-    const themeSwitcher = document.getElementById('theme-switcher');
-    if (themeSwitcher) {
-        themeSwitcher.addEventListener('click', toggleTheme);
-    }
+    window.themeManager = new ThemeManager();
 });
