@@ -1,63 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hobbies - My Web Project</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- Bootstrap JS -->
-  <script src="js/bootstrap.bundle.min.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare GPUs - GPU Comparison</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link id="responsive-css" href="css/style-850px.css" rel="stylesheet">
   <style>
-    /* Grid container styles */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-      grid-gap: 20px;
-      margin-top: 20px;
+    .comparison-card {
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .grid-item {
-      background-color: #2ecc71;
+    .comparison-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .specs-table th {
+      background-color: #f8f9fa;
+    }
+
+    .performance-chart {
+      height: 300px;
+      margin-bottom: 2rem;
+    }
+
+    .text-success {
+      color: #28a745 !important;
+    }
+
+    .text-danger {
+      color: #dc3545 !important;
+    }
+
+    .comparison-header {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
       color: white;
-      padding: 20px;
-      text-align: center;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
     }
 
-    .grid-item:hover {
-      background-color: #27ae60;
+    .select-gpu {
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 0.5rem;
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <!-- Navigation Menu -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">Home</a>
-      <a class="nav-link" href="sub.html">Hobbies</a>
-      <a class="nav-link" href="changes.html">Changes</a>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">GPU Comparison</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="sub.html">Compare GPUs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="changes.html">Changes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="comparison-header">
+    <div class="container text-center">
+      <h1>Compare GPUs</h1>
+      <p class="lead">Select two graphics cards to compare their specifications and performance</p>
+    </div>
   </header>
 
   <main class="container">
-    <!-- Hobbies Content with Grid -->
-    <h1>My Hobbies</h1>
-    <div class="grid-container">
-      <div class="grid-item">Reading</div>
-      <div class="grid-item">Hiking</div>
-      <div class="grid-item">Cooking</div>
-      <div class="grid-item">Gaming</div>
-      <div class="grid-item">Photography</div>
-      <div class="grid-item">Traveling</div>
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="card comparison-card">
+          <div class="card-header bg-primary text-white">
+            <h3 class="h5 mb-0">First GPU</h3>
+          </div>
+          <div class="card-body">
+            <select id="gpu1Select" class="form-select select-gpu">
+              <option value="">Select GPU</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card comparison-card">
+          <div class="card-header bg-success text-white">
+            <h3 class="h5 mb-0">Second GPU</h3>
+          </div>
+          <div class="card-body">
+            <select id="gpu2Select" class="form-select select-gpu">
+              <option value="">Select GPU</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card comparison-card mb-4">
+      <div class="card-header">
+        <h2 class="h4 mb-0">Specifications Comparison</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover specs-table">
+            <thead>
+              <tr>
+                <th>Specification</th>
+                <th>GPU 1</th>
+                <th>GPU 2</th>
+                <th>Difference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>VRAM</td>
+                <td id="vram1">-</td>
+                <td id="vram2">-</td>
+                <td id="vramDiff">-</td>
+              </tr>
+              <tr>
+                <td>Core Clock</td>
+                <td id="coreClock1">-</td>
+                <td id="coreClock2">-</td>
+                <td id="coreClockDiff">-</td>
+              </tr>
+              <tr>
+                <td>TDP</td>
+                <td id="tdp1">-</td>
+                <td id="tdp2">-</td>
+                <td id="tdpDiff">-</td>
+              </tr>
+              <tr>
+                <td>Cores</td>
+                <td id="cores1">-</td>
+                <td id="cores2">-</td>
+                <td id="coresDiff">-</td>
+              </tr>
+              <tr>
+                <td>Ray Tracing</td>
+                <td id="rayTracing1">-</td>
+                <td id="rayTracing2">-</td>
+                <td id="rayTracingDiff">-</td>
+              </tr>
+              <tr>
+                <td>Price (USD)</td>
+                <td id="price1">-</td>
+                <td id="price2">-</td>
+                <td id="priceDiff">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card comparison-card">
+          <div class="card-header">
+            <h3 class="h5 mb-0">4K Performance</h3>
+          </div>
+          <div class="card-body">
+            <canvas id="chart4k" class="performance-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card comparison-card">
+          <div class="card-header">
+            <h3 class="h5 mb-0">1440p Performance</h3>
+          </div>
+          <div class="card-body">
+            <canvas id="chart1440p" class="performance-chart"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
-  <footer class="text-center">
-    <p>&copy; 2024 My Web Project</p>
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2024 GPU Comparison Project</p>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/gpu-comparison.js"></script>
 </body>
+
 </html>

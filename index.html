@@ -1,53 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - My Web Project</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/loadCSS.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Comparison - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link id="responsive-css" href="css/style-850px.css" rel="stylesheet">
   <style>
-    /* Flexbox container styles */
-    .flex-container {
-      display: flex;
-      justify-content: space-around;
-      background-color: #f1f1f1;
-      padding: 20px;
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
     }
 
-    .flex-item {
-      background-color: #3498db;
+    .gpu-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gpu-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .main-navigation {
+      background-color: var(--primary-color);
+      padding: 1rem 0;
+    }
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-list a {
       color: white;
-      padding: 20px;
-      text-align: center;
-      flex-grow: 1;
-      margin: 10px;
-      border-radius: 5px;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
       transition: background-color 0.3s ease;
     }
 
-    .flex-item:hover {
-      background-color: #2980b9;
+    .nav-list a:hover {
+      background-color: var(--accent-color);
+    }
+
+    .gpu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .features-section {
+      background-color: var(--background-color);
+      padding: 3rem 0;
+      margin: 2rem 0;
     }
   </style>
 </head>
-<body>
-  <header>
-    <!-- Navigation Menu with Flexbox -->
-    <nav class="flex-container">
-      <a class="flex-item" href="index.html">Home</a>
-      <a class="flex-item" href="sub.html">Hobbies</a>
-      <a class="flex-item" href="changes.html">Changes</a>
-    </nav>
-  </header>
 
-  <main>
-    <!-- Main Content -->
-    <h1>Welcome to My Website</h1>
+<body>
+  <nav class="main-navigation">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="sub.html">Compare GPUs</a></li>
+        <li><a href="changes.html">Changes</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1>GPU Comparison Tool</h1>
+      <p class="lead">Compare graphics cards and make informed decisions</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="gpu-grid">
+      <div class="gpu-card">
+        <h3>RTX 4090</h3>
+        <p>NVIDIA's flagship gaming GPU</p>
+        <ul>
+          <li>24GB GDDR6X Memory</li>
+          <li>16384 CUDA Cores</li>
+          <li>2.52 GHz Boost Clock</li>
+        </ul>
+        <a href="sub.html" class="btn btn-primary">Compare</a>
+      </div>
+
+      <div class="gpu-card">
+        <h3>RX 7900 XTX</h3>
+        <p>AMD's top gaming graphics card</p>
+        <ul>
+          <li>24GB GDDR6 Memory</li>
+          <li>6144 Stream Processors</li>
+          <li>2.5 GHz Game Clock</li>
+        </ul>
+        <a href="sub.html" class="btn btn-primary">Compare</a>
+      </div>
+
+      <div class="gpu-card">
+        <h3>Arc A770</h3>
+        <p>Intel's high-end gaming GPU</p>
+        <ul>
+          <li>16GB GDDR6 Memory</li>
+          <li>4096 Cores</li>
+          <li>2.1 GHz Graphics Clock</li>
+        </ul>
+        <a href="sub.html" class="btn btn-primary">Compare</a>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <div class="container">
+        <h2 class="text-center mb-4">Key Features</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Detailed Comparisons</h3>
+                <p class="card-text">Compare GPUs across multiple performance metrics</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Performance Metrics</h3>
+                <p class="card-text">Real-world benchmarks and performance data</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Price Analysis</h3>
+                <p class="card-text">Compare price-to-performance ratios</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2024 My Web Project</p>
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2024 GPU Comparison Project</p>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/responsive.js"></script>
 </body>
+
 </html>
