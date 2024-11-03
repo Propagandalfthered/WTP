@@ -1,17 +1,20 @@
+// responsive.js
+
+// Responsive CSS Loader and Theme Toggle
 class ResponsiveCSSLoader {
     constructor() {
         this.breakpoints = {
-            mobile: 550,
-            tablet: 850,
-            desktop: 1250,
-            large: 1400
+            mobile: 700,
+            tablet: 900,
+            desktop: 1300,
+            large: 1600
         };
 
         this.cssFiles = {
-            mobile: 'css/style-550px.css',
-            tablet: 'css/style-850px.css',
-            desktop: 'css/style-1250px.css',
-            large: 'css/style-1400px.css'
+            mobile: 'css/style-700px.css',
+            tablet: 'css/style-900px.css',
+            desktop: 'css/style-1300px.css',
+            large: 'css/style-1600px.css'
         };
 
         this.currentBreakpoint = null;
@@ -68,7 +71,23 @@ class ResponsiveCSSLoader {
     }
 }
 
+// Dark Theme Toggle Functionality
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    const cssLoader = new ResponsiveCSSLoader();
-    cssLoader.init();
+    // Set the initial theme based on saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    }
+
+    // Add event listener to theme toggle button
+    const themeSwitcher = document.getElementById('theme-switcher');
+    if (themeSwitcher) {
+        themeSwitcher.addEventListener('click', toggleTheme);
+    }
 });

@@ -16,43 +16,30 @@
     }
 
     .gpu-card {
-      background: white;
+      background: var(--card-background-color);
+      color: var(--card-text-color);
       border-radius: 8px;
       padding: 1.5rem;
       margin-bottom: 1rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     }
 
     .gpu-card:hover {
       transform: translateY(-5px);
     }
 
-    .main-navigation {
+    .navbar {
       background-color: var(--primary-color);
-      padding: 1rem 0;
     }
 
-    .nav-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-list a {
+    .nav-link {
       color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      transition: color 0.3s ease;
     }
 
-    .nav-list a:hover {
-      background-color: var(--accent-color);
+    .nav-link:hover {
+      color: var(--accent-color);
     }
 
     .gpu-grid {
@@ -67,17 +54,63 @@
       padding: 3rem 0;
       margin: 2rem 0;
     }
+
+    .theme-switch-button {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .theme-switch-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #3498db;
+      --text-color: #2c3e50;
+      --background-color: #ecf0f1;
+      --card-background-color: #ffffff;
+      --card-text-color: #000000;
+    }
+
+    :root.dark {
+      --primary-color: #1b1b1b;
+      --secondary-color: #333333;
+      --accent-color: #3498db;
+      --text-color: #f5f5f5;
+      --background-color: #121212;
+      --card-background-color: #333333;
+      --card-text-color: #f5f5f5;
+    }
   </style>
 </head>
 
 <body>
-  <nav class="main-navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <ul class="nav-list">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="sub.html">Compare GPUs</a></li>
-        <li><a href="changes.html">Changes</a></li>
-      </ul>
+      <a class="navbar-brand" href="index.html">GPU Comparison</a>
+      <button id="theme-switcher" class="btn btn-outline-light">Toggle Dark Theme</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sub.html">Compare GPUs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="changes.html">Changes</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -129,7 +162,7 @@
         <h2 class="text-center mb-4">Key Features</h2>
         <div class="row">
           <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 comparison-card">
               <div class="card-body">
                 <h3 class="card-title h5">Detailed Comparisons</h3>
                 <p class="card-text">Compare GPUs across multiple performance metrics</p>
@@ -137,7 +170,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 comparison-card">
               <div class="card-body">
                 <h3 class="card-title h5">Performance Metrics</h3>
                 <p class="card-text">Real-world benchmarks and performance data</p>
@@ -145,7 +178,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 comparison-card">
               <div class="card-body">
                 <h3 class="card-title h5">Price Analysis</h3>
                 <p class="card-text">Compare price-to-performance ratios</p>
