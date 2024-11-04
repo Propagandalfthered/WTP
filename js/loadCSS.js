@@ -1,22 +1,16 @@
 function loadCSSForResolution() {
-  const existingLink = document.getElementById('main-css');
+  let existingLink = document.getElementById('main-css')
+  if (existingLink) return
 
-  if (!existingLink) {
-    const linkElement = document.createElement('link');
-    linkElement.id = 'main-css';
-    linkElement.rel = 'stylesheet';
-    linkElement.href = 'css/style.css';
+  const link = document.createElement('link')
+  link.id = 'main-css'
+  link.rel = 'stylesheet'
+  link.href = 'css/style.css'
 
-    linkElement.onerror = () => {
-      console.error('Failed to load CSS file');
-    };
+  link.onerror = () => console.error('Failed to load CSS')
+  link.onload = () => console.log('CSS loaded')
 
-    linkElement.onload = () => {
-      console.log('CSS file loaded successfully');
-    };
-
-    document.head.appendChild(linkElement);
-  }
+  document.head.appendChild(link)
 }
 
-window.addEventListener('load', loadCSSForResolution);
+window.addEventListener('load', loadCSSForResolution)
