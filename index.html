@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Порівняння GPU - Головна</title>
+  <!-- Включення Bootstrap CSS та власних стилів -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Стилі Bootstrap 5 для адаптивного макету та компонентів -->
+  <link id="responsive-css" href="css/style.css" rel="stylesheet"> <!-- Динамічне завантаження CSS в залежності від роздільної здатності екрану за допомогою loadCSS.js -->
+  <link id="responsive-css" href="css/index_custom.css" rel="stylesheet"> <!-- Власний стиль для специфічних змін на цій сторінці -->
+</head>
+
+<body>
+  <!-- Навігаційна панель -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Порівняння GPU</a> <!-- Назва проекту, посилання на головну сторінку -->
+      <button id="theme-switcher" class="theme-switch-button" aria-label="Переключити на темну тему">
+        <!-- Кнопка для перемикання теми світла/темна, функція керується класом ThemeManager з responsive.js -->
+        <span class="sun-icon"></span> <!-- Іконка сонця для світлої теми -->
+        <span class="moon-icon"></span> <!-- Іконка місяця для темної теми -->
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Кнопка для відображення/приховування навігаційного меню на мобільних пристроях -->
+        <span class="navbar-toggler-icon"></span> <!-- Іконка для розгортання навігації -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Навігаційні посилання -->
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Головна</a> <!-- Активне посилання на головну сторінку -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sub.html">Порівняти GPU</a> <!-- Посилання на порівняння GPU -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="changes.html">Зміни</a> <!-- Посилання на сторінку зі змінами та доступністю -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Головна секція сторінки, містить основний заголовок та опис -->
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1>Інструмент порівняння GPU</h1> <!-- Основний заголовок сторінки -->
+      <p class="lead">Порівнюйте графічні карти та приймайте обґрунтовані рішення</p> <!-- Короткий опис сторінки -->
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Секція з мозаїкою GPU карт -->
+    <section class="gpu-grid">
+      <!-- Перший GPU продукт -->
+      <div class="gpu-card">
+        <h3>RTX 4090</h3> <!-- Назва GPU карти -->
+        <p class="gpu-brand">NVIDIA GeForce</p> <!-- Бренд GPU -->
+        <div class="gpu-specs">
+          <ul>
+            <li>24GB GDDR6X</li> <!-- Розмір пам'яті -->
+            <li>16384 CUDA Cores</li> <!-- Кількість CUDA ядер -->
+            <li>2.52 GHz Boost</li> <!-- Частота Boost -->
+            <li>450W TDP</li> <!-- TDP (Тепловий дизайн потужності) -->
+          </ul>
+        </div>
+        <span class="price">$1,599</span> <!-- Ціна GPU -->
+        <div class="gpu-features">
+          <span class="badge">DLSS 3</span> <!-- Функція DLSS -->
+          <span class="badge">Ray Tracing</span> <!-- Функція Ray Tracing -->
+        </div>
+        <a href="sub.html" class="btn btn-primary">Порівняти</a> <!-- Кнопка для порівняння -->
+      </div>
+
+      <!-- Другий GPU продукт -->
+      <div class="gpu-card">
+        <h3>RX 7900 XTX</h3> <!-- Назва GPU карти -->
+        <p class="gpu-brand">AMD Radeon</p> <!-- Бренд GPU -->
+        <div class="gpu-specs">
+          <ul>
+            <li>24GB GDDR6</li> <!-- Розмір пам'яті -->
+            <li>6144 Stream Processors</li> <!-- Кількість Stream Processorів -->
+            <li>2.5 GHz Game Clock</li> <!-- Ігрова частота -->
+            <li>355W TDP</li> <!-- TDP (Тепловий дизайн потужності) -->
+          </ul>
+        </div>
+        <span class="price">$999</span> <!-- Ціна GPU -->
+        <div class="gpu-features">
+          <span class="badge">FSR 3</span> <!-- Функція FSR -->
+          <span class="badge">Ray Tracing</span> <!-- Функція Ray Tracing -->
+        </div>
+        <a href="sub.html" class="btn btn-primary">Порівняти</a> <!-- Кнопка для порівняння -->
+      </div>
+
+      <!-- Третій GPU продукт -->
+      <div class="gpu-card">
+        <h3>Arc A770</h3> <!-- Назва GPU карти -->
+        <p class="gpu-brand">Intel</p> <!-- Бренд GPU -->
+        <div class="gpu-specs">
+          <ul>
+            <li>16GB GDDR6</li> <!-- Розмір пам'яті -->
+            <li>4096 Xe Cores</li> <!-- Кількість Xe ядер -->
+            <li>2.1 GHz</li> <!-- Частота GPU -->
+            <li>225W TDP</li> <!-- TDP (Тепловий дизайн потужності) -->
+          </ul>
+        </div>
+        <span class="price">$349</span> <!-- Ціна GPU -->
+        <div class="gpu-features">
+          <span class="badge">XeSS</span> <!-- Функція XeSS -->
+          <span class="badge">Ray Tracing</span> <!-- Функція Ray Tracing -->
+        </div>
+        <a href="sub.html" class="btn btn-primary">Порівняти</a> <!-- Кнопка для порівняння -->
+      </div>
+    </section>
+
+    <!-- Секція з ключовими функціями -->
+    <section class="features-section">
+      <div class="container">
+        <h2 class="text-center mb-4">Ключові функції</h2> <!-- Заголовок секції з ключовими функціями -->
+        <div class="row">
+          <!-- Перший ключовий елемент -->
+          <div class="col-md-4">
+            <div class="card h-100 comparison-card">
+              <div class="card-body">
+                <h3 class="card-title h5">Детальні порівняння</h3> <!-- Заголовок картки -->
+                <p class="card-text">Порівнюйте GPU за декількома метриками продуктивності</p> <!-- Опис картки -->
+              </div>
+            </div>
+          </div>
+          <!-- Другий ключовий елемент -->
+          <div class="col-md-4">
+            <div class="card h-100 comparison-card">
+              <div class="card-body">
+                <h3 class="card-title h5">Метрики продуктивності</h3> <!-- Заголовок картки -->
+                <p class="card-text">Тестування в реальних умовах та дані продуктивності</p> <!-- Опис картки -->
+              </div>
+            </div>
+          </div>
+          <!-- Третій ключовий елемент -->
+          <div class="col-md-4">
+            <div class="card h-100 comparison-card">
+              <div class="card-body">
+                <h3 class="card-title h5">Аналіз ціни</h3> <!-- Заголовок картки -->
+                <p class="card-text">Порівняйте співвідношення ціна-продуктивність</p> <!-- Опис картки -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Підвал сторінки -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2024 Проект "Порівняння GPU"</p> <!-- Інформація про авторські права -->
+    </div>
+  </footer>
+
+  <!-- Включення JavaScript бібліотек -->
+  <script src="js/bootstrap.bundle.min.js"></script> <!-- Бібліотека Bootstrap для взаємодії, такої як розгортання навігації -->
+  <script src="js/responsive.js"></script> <!-- Скрипт для адаптивних функцій -->
+  <script src="js/gpu-comparison.js"></script> <!-- Скрипт для логіки порівняння GPU -->
+</body>
+
+</html>

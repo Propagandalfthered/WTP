@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Зміни та доступність - Порівняння GPU</title>
+  <!-- Включення Bootstrap CSS та власних стилів -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Стилі Bootstrap 5 для адаптивного макету та компонентів -->
+  <link rel="stylesheet" href="css/style.css" id="main-css"> <!-- Основний стиль сторінки -->
+  <link rel="stylesheet" href="css/changes_custom.css" id="main-css"> <!-- Власний стиль для специфічних змін на цій сторінці -->
+</head>
+
+<body>
+  <!-- Навігаційна панель -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Порівняння GPU</a> <!-- Назва проекту, посилання на головну сторінку -->
+      <button id="theme-switcher" class="theme-switch-button" aria-label="Переключити на темну тему">
+        <!-- Кнопка для перемикання теми світла/темна, функція керується класом ThemeManager з responsive.js -->
+        <span class="sun-icon"></span> <!-- Іконка сонця для світлої теми -->
+        <span class="moon-icon"></span> <!-- Іконка місяця для темної теми -->
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Кнопка для відображення/приховування навігаційного меню на мобільних пристроях -->
+        <span class="navbar-toggler-icon"></span> <!-- Іконка для розгортання навігації -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Навігаційні посилання -->
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Головна</a> <!-- Посилання на головну сторінку -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sub.html">Порівняти GPU</a> <!-- Посилання на порівняння GPU -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="changes.html">Зміни</a> <!-- Активне посилання на сторінку зі змінами та доступністю -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Заголовок для сторінки змін та доступності -->
+  <header class="changes-header">
+    <div class="container text-center">
+      <h1>Зміни та функції доступності</h1> <!-- Основний заголовок сторінки -->
+      <p class="lead">Налаштуйте свій досвід перегляду та дізнайтеся про наші покращення</p> <!-- Короткий опис сторінки -->
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Секція з контролем розміру контенту -->
+    <section class="row mb-4">
+      <div class="col-12">
+        <div class="card control-card">
+          <div class="card-header">
+            <h2 class="h4 mb-0">Контроль розміру контенту</h2> <!-- Заголовок картки з контролем розміру контенту -->
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="h5">Метод 1: Кнопки розміру</h3> <!-- Заголовок для першого способу збільшення контенту -->
+              <div class="btn-group" role="group" aria-label="Контроль розміру контенту">
+                <!-- Група кнопок для зміни розміру контенту, керується класом ContentResizer з resize.js -->
+                <button onclick="window.contentResizer.setSize('small')" class="btn btn-outline-primary">Малий</button> <!-- Кнопка для малого розміру -->
+                <button onclick="window.contentResizer.setSize('medium')" class="btn btn-outline-primary">Середній</button> <!-- Кнопка для середнього розміру -->
+                <button onclick="window.contentResizer.setSize('large')" class="btn btn-outline-primary">Великий</button> <!-- Кнопка для великого розміру -->
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Метод 2: Комбінації клавіш</h3> <!-- Заголовок для другого способу збільшення контенту -->
+              <p>Використовуйте наступні комбінації клавіш для зміни розміру контенту:</p> <!-- Опис використання комбінацій клавіш -->
+              <ul class="list-unstyled">
+                <!-- Список комбінацій клавіш -->
+                <li class="mb-2">
+                  <span class="shortcut-key">Shift</span> +
+                  <span class="shortcut-key">1</span> : Малий розмір <!-- Комбінація клавіш для малого розміру -->
+                </li>
+                <li class="mb-2">
+                  <span class="shortcut-key">Shift</span> +
+                  <span class="shortcut-key">2</span> : Середній розмір <!-- Комбінація клавіш для середнього розміру -->
+                </li>
+                <li>
+                  <span class="shortcut-key">Shift</span> +
+                  <span class="shortcut-key">3</span> : Великий розмір <!-- Комбінація клавіш для великого розміру -->
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="h5">Метод 3: Випадаючий список розміру</h3> <!-- Заголовок для третього способу збільшення контенту -->
+              <select id="sizeSelect" class="form-select" style="max-width: 200px;" onchange="window.contentResizer.setSize(this.value)">
+                <!-- Випадаючий список для вибору розміру контенту, значення керуються класом ContentResizer з resize.js -->
+                <option value="small">Малий</option> <!-- Опція малий розмір -->
+                <option value="medium" selected>Середній</option> <!-- Опція середній розмір (за замовчуванням) -->
+                <option value="large">Великий</option> <!-- Опція великий розмір -->
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sekcia_zmena">
+      <h2 class="mb-4">Покращення UI/UX та функції доступності</h2> <!-- Заголовок секції про покращення UI/UX -->
+
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="h5">Функції доступності</h3> <!-- Заголовок для частини про доступність -->
+          <ul class="feature-list">
+            <!-- Список функцій доступності -->
+            <li>Кілька методів контролю розміру тексту</li>
+            <li>Комбінації клавіш з клавішею Shift</li>
+            <li>Опції високої контрастності кольорів</li>
+            <li>Чітка візуальна ієрархія</li>
+            <li>ARIA-мітки для читачів екрану</li> <!-- ARIA-мітки для підвищення доступності сторінки -->
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="h5">Покращення дизайну</h3> <!-- Заголовок для частини про покращення дизайну -->
+          <ul class="feature-list">
+            <!-- Список покращень дизайну -->
+            <li>Адаптивна сітка</li> <!-- Адаптивна сітка -->
+            <li>Інтерактивне порівняння GPU</li> <!-- Інтерактивне порівняння GPU -->
+            <li>Візуалізація продуктивності</li> <!-- Візуалізація продуктивності за допомогою графіків з Chart.js -->
+            <li>Інтуїтивна навігація</li> <!-- Інтуїтивна навігація через різні сторінки проекту -->
+            <li>Сучасний дизайн на основі карток</li> <!-- Сучасний дизайн на основі карток -->
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="h5">Технічні покращення</h3> <!-- Заголовок для частини про технічні покращення -->
+          <ul class="feature-list">
+            <!-- Список технічних покращень -->
+            <li>Інтеграція Bootstrap 5</li> <!-- Інтеграція Bootstrap 5 для адаптивного дизайну -->
+            <li>Динамічне завантаження CSS</li> <!-- Динамічне завантаження CSS в залежності від роздільної здатності екрану -->
+            <li>Chart.js для візуалізації даних</li> <!-- Бібліотека Chart.js для візуалізації даних у графіках -->
+            <li>Local storage для налаштувань</li> <!-- Використання local storage для зберігання налаштувань користувача -->
+            <li>Оптимізована продуктивність</li> <!-- Оптимізована продуктивність для швидшого завантаження сторінки -->
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h3 class="h5">Точки перелому та адаптивний дизайн</h3> <!-- Заголовок для секції про адаптивний дизайн -->
+        <p>Наш вебсайт оптимізований для різних розмірів екранів із конкретними точками перелому:</p> <!-- Опис оптимізації для різних розмірів екранів -->
+        <ul class="feature-list">
+          <!-- Список поділу екранів -->
+          <li>Мобільний: до 550px</li> <!-- Поділ для мобільних пристроїв -->
+          <li>Планшет: від 551px до 850px</li> <!-- Поділ для планшетів -->
+          <li>Десктоп: від 851px до 1250px</li> <!-- Поділ для десктопів -->
+          <li>Великий десктоп: більше 1250px</li> <!-- Поділ для великих десктопів -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Підвал сторінки -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2024 Проект "Порівняння GPU"</p> <!-- Інформація про авторські права -->
+    </div>
+  </footer>
+
+  <!-- Включення JavaScript бібліотек -->
+  <script src="js/bootstrap.bundle.min.js"></script> <!-- Бібліотека Bootstrap для взаємодії, такої як розгортання навігації -->
+  <script src="js/responsive.js"></script> <!-- Скрипт для адаптивних функцій, перемикання тем та ARIA -->
+  <script src="js/resize.js"></script> <!-- Скрипт для збільшення контенту за допомогою класу ContentResizer -->
+</body>
+
+</html>
