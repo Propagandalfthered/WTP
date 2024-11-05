@@ -5,89 +5,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changes and Accessibility - GPU Comparison</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" id="main-css">
-  <link rel="stylesheet" href="css/changes_custom.css" id="main-css">
+  <!-- Zahrnutie Bootstrap CSS a vlastných štýlov -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap 5 štýly pre responzívny layout a komponenty -->
+  <link rel="stylesheet" href="css/style.css" id="main-css"> <!-- Hlavný štýl stránky -->
+  <link rel="stylesheet" href="css/changes_custom.css" id="main-css"> <!-- Vlastný štýl pre špecifické úpravy na tejto stránke -->
 </head>
 
 <body>
+  <!-- Navigačný panel -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">GPU Comparison</a>
-      <button id="theme-switcher" class="theme-switch-button">
-        <span class="sun-icon"></span>
-        <span class="moon-icon"></span>
+      <a class="navbar-brand" href="index.html">GPU Comparison</a> <!-- Názov projektu, odkaz na hlavnú stránku -->
+      <button id="theme-switcher" class="theme-switch-button" aria-label="Switch to Dark Theme">
+        <!-- Tlačidlo na prepínanie témy svetlý/tmavý, funkcia riadená triedou ThemeManager z responsive.js -->
+        <span class="sun-icon"></span> <!-- Ikona slnka pre svetlý motív -->
+        <span class="moon-icon"></span> <!-- Ikona mesiaca pre tmavý motív -->
       </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+        <!-- Tlačidlo na zobrazenie/skrytie navigačného menu na mobilných zariadeniach -->
+        <span class="navbar-toggler-icon"></span> <!-- Ikona pre rozbalenie navigácie -->
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+          <!-- Navigačné odkazy -->
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.html">Home</a> <!-- Odkaz na hlavnú stránku -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sub.html">Compare GPUs</a>
+            <a class="nav-link" href="sub.html">Compare GPUs</a> <!-- Odkaz na porovnanie GPU -->
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="changes.html">Changes</a>
+            <a class="nav-link active" href="changes.html">Changes</a> <!-- Aktívny odkaz na stránku s úpravami a prístupnosťou -->
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Hlavička pre stránku úprav a prístupnosti -->
   <header class="changes-header">
     <div class="container text-center">
-      <h1>Changes and Accessibility Features</h1>
-      <p class="lead">Customize your viewing experience and learn about our improvements</p>
+      <h1>Changes and Accessibility Features</h1> <!-- Hlavný nadpis stránky -->
+      <p class="lead">Customize your viewing experience and learn about our improvements</p> <!-- Krátky popis stránky -->
     </div>
   </header>
 
   <main class="container">
+    <!-- Sekcia s ovládaním veľkosti obsahu -->
     <section class="row mb-4">
       <div class="col-12">
         <div class="card control-card">
           <div class="card-header">
-            <h2 class="h4 mb-0">Content Size Controls</h2>
+            <h2 class="h4 mb-0">Content Size Controls</h2> <!-- Nadpis karty s ovládaním veľkosti obsahu -->
           </div>
           <div class="card-body">
             <div class="mb-4">
-              <h3 class="h5">Method 1: Size Buttons</h3>
+              <h3 class="h5">Method 1: Size Buttons</h3> <!-- Nadpis pre prvý spôsob zväčšovania obsahu -->
               <div class="btn-group" role="group" aria-label="Content size controls">
-                <button onclick="window.contentResizer.setSize('small')" class="btn btn-outline-primary">Small</button>
-                <button onclick="window.contentResizer.setSize('medium')"
-                  class="btn btn-outline-primary">Medium</button>
-                <button onclick="window.contentResizer.setSize('large')" class="btn btn-outline-primary">Large</button>
+                <!-- Skupina tlačidiel na zmenu veľkosti obsahu, ovládané triedou ContentResizer z resize.js -->
+                <button onclick="window.contentResizer.setSize('small')" class="btn btn-outline-primary">Small</button> <!-- Tlačidlo pre malú veľkosť -->
+                <button onclick="window.contentResizer.setSize('medium')" class="btn btn-outline-primary">Medium</button> <!-- Tlačidlo pre strednú veľkosť -->
+                <button onclick="window.contentResizer.setSize('large')" class="btn btn-outline-primary">Large</button> <!-- Tlačidlo pre veľkú veľkosť -->
               </div>
             </div>
 
             <div class="mb-4">
-              <h3 class="h5">Method 2: Keyboard Shortcuts</h3>
-              <p>Use the following keyboard shortcuts to change content size:</p>
+              <h3 class="h5">Method 2: Keyboard Shortcuts</h3> <!-- Nadpis pre druhý spôsob zväčšovania obsahu -->
+              <p>Use the following keyboard shortcuts to change content size:</p> <!-- Popis použitia klávesových skratiek -->
               <ul class="list-unstyled">
+                <!-- Zoznam klávesových skratiek -->
                 <li class="mb-2">
                   <span class="shortcut-key">Shift</span> +
-                  <span class="shortcut-key">1</span> : Small size
+                  <span class="shortcut-key">1</span> : Small size <!-- Klávesová skratka pre malú veľkosť -->
                 </li>
                 <li class="mb-2">
                   <span class="shortcut-key">Shift</span> +
-                  <span class="shortcut-key">2</span> : Medium size
+                  <span class="shortcut-key">2</span> : Medium size <!-- Klávesová skratka pre strednú veľkosť -->
                 </li>
                 <li>
                   <span class="shortcut-key">Shift</span> +
-                  <span class="shortcut-key">3</span> : Large size
+                  <span class="shortcut-key">3</span> : Large size <!-- Klávesová skratka pre veľkú veľkosť -->
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 class="h5">Method 3: Size Dropdown</h3>
-              <select id="sizeSelect" class="form-select" style="max-width: 200px;"
-                onchange="window.contentResizer.setSize(this.value)">
-                <option value="small">Small</option>
-                <option value="medium" selected>Medium</option>
-                <option value="large">Large</option>
+              <h3 class="h5">Method 3: Size Dropdown</h3> <!-- Nadpis pre tretí spôsob zväčšovania obsahu -->
+              <select id="sizeSelect" class="form-select" style="max-width: 200px;" onchange="window.contentResizer.setSize(this.value)">
+                <!-- Dropdown na výber veľkosti obsahu, hodnoty ovládané triedou ContentResizer z resize.js -->
+                <option value="small">Small</option> <!-- Možnosť malá veľkosť -->
+                <option value="medium" selected>Medium</option> <!-- Možnosť stredná veľkosť (predvolená) -->
+                <option value="large">Large</option> <!-- Možnosť veľká veľkosť -->
               </select>
             </div>
           </div>
@@ -96,65 +104,71 @@
     </section>
 
     <section class="sekcia_zmena">
-      <h2 class="mb-4">UI/UX Improvements and Accessibility Features</h2>
+      <h2 class="mb-4">UI/UX Improvements and Accessibility Features</h2> <!-- Nadpis sekcie o vylepšeniach UI/UX -->
 
       <div class="row">
         <div class="col-md-4">
-          <h3 class="h5">Accessibility Features</h3>
+          <h3 class="h5">Accessibility Features</h3> <!-- Nadpis pre časť o prístupnosti -->
           <ul class="feature-list">
+            <!-- Zoznam prístupnostných funkcií -->
             <li>Multiple text size control methods</li>
             <li>Keyboard shortcuts with Shift key</li>
             <li>High contrast color options</li>
             <li>Clear visual hierarchy</li>
-            <li>ARIA labels for screen readers</li>
+            <li>ARIA labels for screen readers</li> <!-- ARIA labely zvyšujúce prístupnosť stránky -->
           </ul>
         </div>
 
         <div class="col-md-4">
-          <h3 class="h5">Design Improvements</h3>
+          <h3 class="h5">Design Improvements</h3> <!-- Nadpis pre časť o dizajnových vylepšeniach -->
           <ul class="feature-list">
-            <li>Responsive grid layout</li>
-            <li>Interactive GPU comparison</li>
-            <li>Performance visualization</li>
-            <li>Intuitive navigation</li>
-            <li>Modern card-based design</li>
+            <!-- Zoznam dizajnových vylepšení -->
+            <li>Responsive grid layout</li> <!-- Responzívna mriežka -->
+            <li>Interactive GPU comparison</li> <!-- Interaktívne porovnanie GPU -->
+            <li>Performance visualization</li> <!-- Vizualizácia výkonu pomocou grafov z Chart.js -->
+            <li>Intuitive navigation</li> <!-- Intuitívna navigácia cez rôzne stránky projektu -->
+            <li>Modern card-based design</li> <!-- Moderný dizajn založený na kartách -->
           </ul>
         </div>
 
         <div class="col-md-4">
-          <h3 class="h5">Technical Enhancements</h3>
+          <h3 class="h5">Technical Enhancements</h3> <!-- Nadpis pre časť o technických vylepšeniach -->
           <ul class="feature-list">
-            <li>Bootstrap 5 integration</li>
-            <li>Dynamic CSS loading</li>
-            <li>Chart.js for data visualization</li>
-            <li>Local storage for preferences</li>
-            <li>Optimized performance</li>
+            <!-- Zoznam technických vylepšení -->
+            <li>Bootstrap 5 integration</li> <!-- Integrácia Bootstrap 5 pre responzívny dizajn -->
+            <li>Dynamic CSS loading</li> <!-- Dynamické načítanie CSS podľa rozlíšenia obrazovky -->
+            <li>Chart.js for data visualization</li> <!-- Knižnica Chart.js na vizualizáciu údajov v grafoch -->
+            <li>Local storage for preferences</li> <!-- Používanie local storage na ukladanie preferencií používateľa -->
+            <li>Optimized performance</li> <!-- Optimalizovaný výkon pre rýchlejšie načítanie stránky -->
           </ul>
         </div>
       </div>
 
       <div class="mt-4">
-        <h3 class="h5">Breakpoints and Responsive Design</h3>
-        <p>Our website is optimized for various screen sizes with specific breakpoints:</p>
+        <h3 class="h5">Breakpoints and Responsive Design</h3> <!-- Nadpis pre sekciu o responzívnom dizajne -->
+        <p>Our website is optimized for various screen sizes with specific breakpoints:</p> <!-- Popis o optimalizácii pre rôzne veľkosti obrazoviek -->
         <ul class="feature-list">
-          <li>Mobile: Up to 550px</li>
-          <li>Tablet: 551px to 850px</li>
-          <li>Desktop: 851px to 1250px</li>
-          <li>Large Desktop: Above 1250px</li>
+          <!-- Zoznam rozdelenia obrazoviek -->
+          <li>Mobile: Up to 550px</li> <!-- Rozdelenie pre mobilné zariadenia -->
+          <li>Tablet: 551px to 850px</li> <!-- Rozdelenie pre tablety -->
+          <li>Desktop: 851px to 1250px</li> <!-- Rozdelenie pre desktopy -->
+          <li>Large Desktop: Above 1250px</li> <!-- Rozdelenie pre veľké desktopy -->
         </ul>
       </div>
     </section>
   </main>
 
+  <!-- Pätička stránky -->
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-      <p class="mb-0">© 2024 GPU Comparison Project</p>
+      <p class="mb-0">© 2024 GPU Comparison Project</p> <!-- Informácia o autorských právach -->
     </div>
   </footer>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/responsive.js"></script>
-  <script src="js/resize.js"></script>
+  <!-- Zahrnutie JavaScriptových knižníc -->
+  <script src="js/bootstrap.bundle.min.js"></script> <!-- Bootstrap knižnica pre interakcie ako rozbalenie navigácie -->
+  <script src="js/responsive.js"></script> <!-- Skript pre responzívne funkcie, prepínanie tém a ARIA -->
+  <script src="js/resize.js"></script> <!-- Skript pre zväčšovanie obsahu pomocou triedy ContentResizer -->
 </body>
 
 </html>
