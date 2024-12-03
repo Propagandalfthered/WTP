@@ -1,77 +1,88 @@
 .comparison-card {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    background-color: var(--card-background-color);
-    color: var(--card-text-color);
+    /* Nastavuje štýl pre porovnávacie karty */
+    border-radius: 8px; /* Zaoblenie rohov pre estetický vzhľad */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň pre pridanie hĺbky */
+    transition: transform 0.3s ease; /* Plynulý prechod pri transformácii, napr. pri hover */
+    background-color: var(--card-background-color); /* Farba pozadia karty definovaná pomocou CSS premennej */
+    color: var(--card-text-color); /* Farba textu karty definovaná pomocou CSS premennej */
 }
 
 .comparison-card:hover {
-    transform: translateY(-5px);
+    /* Efekt pri hover nad porovnávacou kartou */
+    transform: translateY(-5px); /* Posunutie karty mierne nahor pre zvýraznenie */
 }
 
 .specs-table th,
 .specs-table td {
-    background-color: var(--table-background-color);
-    color: var(--table-text-color);
+    /* Nastavenie štýlu pre bunky tabuľky so špecifikáciami */
+    background-color: var(--table-background-color); /* Farba pozadia buniek tabuľky */
+    color: var(--table-text-color); /* Farba textu v bunkách tabuľky */
 }
 
 .performance-chart {
-    height: 300px;
-    margin-bottom: 2rem;
+    /* Štýly pre graf výkonu */
+    height: 300px; /* Výška grafu */
+    margin-bottom: 2rem; /* Spodný margin pre oddelenie grafu od ostatného obsahu */
 }
 
 .text-success {
-    color: #28a745 !important;
+    /* Štýl pre text, ktorý indikuje úspech alebo pozitívny stav */
+    color: #28a745 !important; /* Zelená farba pre zvýraznenie pozitívneho výsledku, !important na prekrytie iných štýlov */
 }
 
 .text-danger {
-    color: #dc3545 !important;
+    /* Štýl pre text, ktorý indikuje chybu alebo negatívny stav */
+    color: #dc3545 !important; /* Červená farba pre zvýraznenie negatívneho výsledku, !important na prekrytie iných štýlov */
 }
 
 .comparison-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
-    transition: background 0.3s ease;
+    /* Štýl pre hlavičku porovnávacej sekcie */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Prechod medzi dvomi farbami pre zvýraznenie */
+    color: white; /* Biela farba textu pre kontrast */
+    padding: 2rem 0; /* Vertikálny padding pre lepšie rozloženie obsahu */
+    margin-bottom: 2rem; /* Spodný margin pre oddelenie od ďalšieho obsahu */
+    transition: background 0.3s ease; /* Plynulý prechod pozadia pri zmene */
 }
 
 .select-gpu {
-    background-color: var(--background-color);
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
-    padding: 0.5rem;
-    color: var(--text-color);
-    transition: background-color 0.3s ease;
+    /* Štýl pre výber GPU */
+    background-color: var(--background-color); /* Farba pozadia pre výber, definovaná pomocou CSS premennej */
+    border: 1px solid #dee2e6; /* Svetlý okraj pre odlíšenie od pozadia */
+    border-radius: 4px; /* Zaoblenie rohov pre estetický vzhľad */
+    padding: 0.5rem; /* Padding pre pohodlné kliknutie */
+    color: var(--text-color); /* Farba textu definovaná pomocou CSS premennej */
+    transition: background-color 0.3s ease; /* Plynulý prechod farby pozadia pri zmene */
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Všeobecné štýly pre telo stránky */
+    background-color: var(--background-color); /* Používa dynamickú farbu pozadia definovanú pomocou CSS premennej */
+    color: var(--text-color); /* Farba textu definovaná pomocou CSS premennej */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Plynulý prechod pri zmene farby pozadia a textu */
 }
 
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #3498db;
-    --text-color: #2c3e50;
-    --background-color: #ecf0f1;
-    --card-background-color: #ffffff;
-    --card-text-color: #000000;
-    --table-background-color: #f8f9fa;
-    --table-text-color: #000000;
+    /* Definovanie základných CSS premenných pre svetlý motív */
+    --primary-color: #2c3e50; /* Hlavná farba používaná pre prvky ako napr. hlavička */
+    --secondary-color: #34495e; /* Sekundárna farba pre menej dôležité prvky */
+    --accent-color: #3498db; /* Akcentová farba, napr. pre odkazy a tlačidlá */
+    --text-color: #2c3e50; /* Hlavná farba textu */
+    --background-color: #ecf0f1; /* Farba pozadia stránky */
+    --card-background-color: #ffffff; /* Farba pozadia kariet */
+    --card-text-color: #000000; /* Farba textu v kartách */
+    --table-background-color: #f8f9fa; /* Farba pozadia buniek tabuľky */
+    --table-text-color: #000000; /* Farba textu v tabuľkách */
 }
 
 :root.dark {
-    --primary-color: #1b1b1b;
-    --secondary-color: #333333;
-    --accent-color: #3498db;
-    --text-color: #f5f5f5;
-    --background-color: #121212;
-    --card-background-color: #333333;
-    --card-text-color: #f5f5f5;
-    --table-background-color: #444444;
-    --table-text-color: #f5f5f5;
+    /* Definovanie základných CSS premenných pre tmavý motív */
+    --primary-color: #1b1b1b; /* Hlavná tmavá farba pre prvky */
+    --secondary-color: #333333; /* Sekundárna tmavá farba */
+    --accent-color: #3498db; /* Akcentová farba zostáva rovnaká */
+    --text-color: #f5f5f5; /* Svetlá farba textu pre lepší kontrast na tmavom pozadí */
+    --background-color: #121212; /* Tmavá farba pozadia stránky */
+    --card-background-color: #333333; /* Tmavá farba pozadia kariet */
+    --card-text-color: #f5f5f5; /* Svetlá farba textu v kartách */
+    --table-background-color: #444444; /* Tmavá farba pozadia buniek tabuľky */
+    --table-text-color: #f5f5f5; /* Svetlá farba textu v tabuľkách */
 }

@@ -5,56 +5,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compare GPUs - GPU Comparison</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" id="main-css">
-  <link rel="stylesheet" href="css/sub_custom.css" id="main-css">
-  <script src="js/chart.js"></script>
+  <!-- Zahrnutie Bootstrap CSS a vlastných štýlov -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap 5 štýly pre responzívny layout a komponenty -->
+  <link rel="stylesheet" href="css/style.css" id="main-css"> <!-- Hlavný štýl stránky -->
+  <link rel="stylesheet" href="css/sub_custom.css" id="main-css"> <!-- Vlastný štýl pre špecifické úpravy na tejto stránke -->
+  <script src="js/chart.js"></script> <!-- Chart.js knižnica pre zobrazenie grafov výkonu -->
 </head>
 
 <body>
+  <!-- Navigačný panel -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">GPU Comparison</a>
-      <button id="theme-switcher" class="theme-switch-button">
-        <span class="sun-icon"></span>
-        <span class="moon-icon"></span>
+      <a class="navbar-brand" href="index.html">GPU Comparison</a> <!-- Názov projektu, odkaz na hlavnú stránku -->
+      <button id="theme-switcher" class="theme-switch-button" aria-label="Switch to Dark Theme">
+        <!-- Tlačidlo na prepínanie témy svetlý/tmavý, funkcia riadená triedou ThemeManager z responsive.js -->
+        <span class="sun-icon"></span> <!-- Ikona slnka pre svetlý motív -->
+        <span class="moon-icon"></span> <!-- Ikona mesiaca pre tmavý motív -->
       </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+        <!-- Tlačidlo na zobrazenie/skrytie navigačného menu na mobilných zariadeniach -->
+        <span class="navbar-toggler-icon"></span> <!-- Ikona pre rozbalenie navigácie -->
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="sub.html">Compare GPUs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="changes.html">Changes</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="sub.html">Compare GPUs</a></li>
+          <li class="nav-item"><a class="nav-link" href="changes.html">Changes</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.php">Register Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="manager.php">Manage Users</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Hlavička pre stránku porovnania GPU -->
   <header class="comparison-header">
     <div class="container text-center">
-      <h1>Compare GPUs</h1>
-      <p class="lead">Select two graphics cards to compare their specifications and performance</p>
+      <h1>Compare GPUs</h1> <!-- Hlavný nadpis stránky -->
+      <p class="lead">Select two graphics cards to compare their specifications and performance</p> <!-- Popis stránky -->
     </div>
   </header>
 
   <main class="container">
+    <!-- Sekcia pre výber GPU na porovnanie -->
     <div class="row mb-4">
       <div class="col-md-6">
         <div class="card comparison-card">
           <div class="card-header bg-primary text-white">
-            <h3 class="h5 mb-0">First GPU</h3>
+            <h3 class="h5 mb-0">First GPU</h3> <!-- Nadpis pre príslušný výber prvej GPU -->
           </div>
           <div class="card-body">
             <select id="gpu1Select" class="form-select select-gpu">
-              <option value="">Select GPU</option>
+              <!-- Dropdown pre výber prvej GPU, možnosti napĺňané pomocou gpu-comparison.js -->
+              <option value="">Select GPU</option> <!-- Predvolená možnosť, žiaden GPU nevybraný -->
             </select>
           </div>
         </div>
@@ -62,68 +65,71 @@
       <div class="col-md-6">
         <div class="card comparison-card">
           <div class="card-header bg-success text-white">
-            <h3 class="h5 mb-0">Second GPU</h3>
+            <h3 class="h5 mb-0">Second GPU</h3> <!-- Nadpis pre príslušný výber druhej GPU -->
           </div>
           <div class="card-body">
             <select id="gpu2Select" class="form-select select-gpu">
-              <option value="">Select GPU</option>
+              <!-- Dropdown pre výber druhej GPU, možnosti napĺňané pomocou gpu-comparison.js -->
+              <option value="">Select GPU</option> <!-- Predvolená možnosť, žiaden GPU nevybraný -->
             </select>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Sekcia s tabuľkou na porovnanie špecifikácií GPU -->
     <div class="card comparison-card mb-4">
       <div class="card-header">
-        <h2 class="h4 mb-0">Specifications Comparison</h2>
+        <h2 class="h4 mb-0">Specifications Comparison</h2> <!-- Nadpis tabuľky porovnania špecifikácií -->
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-hover specs-table">
+            <!-- Tabuľka s špecifikáciami, napĺňaná pomocou gpu-comparison.js -->
             <thead>
               <tr>
-                <th>Specification</th>
-                <th>GPU 1</th>
-                <th>GPU 2</th>
-                <th>Difference</th>
+                <th>Specification</th> <!-- Stĺpec pre názov špecifikácie -->
+                <th>GPU 1</th> <!-- Stĺpec pre prvú GPU -->
+                <th>GPU 2</th> <!-- Stĺpec pre druhú GPU -->
+                <th>Difference</th> <!-- Stĺpec pre rozdiel medzi GPU -->
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>VRAM</td>
-                <td id="vram1">-</td>
-                <td id="vram2">-</td>
-                <td id="vramDiff">-</td>
+                <td>VRAM</td> <!-- VRAM (čipová pamäť) -->
+                <td id="vram1">-</td> <!-- VRAM prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="vram2">-</td> <!-- VRAM druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="vramDiff">-</td> <!-- Rozdiel vo VRAM, vypočítaný pomocou gpu-comparison.js -->
               </tr>
               <tr>
-                <td>Core Clock</td>
-                <td id="coreClock1">-</td>
-                <td id="coreClock2">-</td>
-                <td id="coreClockDiff">-</td>
+                <td>Core Clock</td> <!-- Základný tak GPU -->
+                <td id="coreClock1">-</td> <!-- Core Clock prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="coreClock2">-</td> <!-- Core Clock druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="coreClockDiff">-</td> <!-- Rozdiel v Core Clock, vypočítaný pomocou gpu-comparison.js -->
               </tr>
               <tr>
-                <td>TDP</td>
-                <td id="tdp1">-</td>
-                <td id="tdp2">-</td>
-                <td id="tdpDiff">-</td>
+                <td>TDP</td> <!-- TDP (Činná spotreba) -->
+                <td id="tdp1">-</td> <!-- TDP prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="tdp2">-</td> <!-- TDP druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="tdpDiff">-</td> <!-- Rozdiel v TDP, vypočítaný pomocou gpu-comparison.js -->
               </tr>
               <tr>
-                <td>Cores</td>
-                <td id="cores1">-</td>
-                <td id="cores2">-</td>
-                <td id="coresDiff">-</td>
+                <td>Cores</td> <!-- Počet jadier GPU -->
+                <td id="cores1">-</td> <!-- Počet jadier prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="cores2">-</td> <!-- Počet jadier druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="coresDiff">-</td> <!-- Rozdiel v počte jadier, vypočítaný pomocou gpu-comparison.js -->
               </tr>
               <tr>
-                <td>Ray Tracing</td>
-                <td id="rayTracing1">-</td>
-                <td id="rayTracing2">-</td>
-                <td id="rayTracingDiff">-</td>
+                <td>Ray Tracing</td> <!-- Podpora ray tracingu -->
+                <td id="rayTracing1">-</td> <!-- Ray Tracing prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="rayTracing2">-</td> <!-- Ray Tracing druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="rayTracingDiff">-</td> <!-- Rozdiel v podpore ray tracingu, vypočítaný pomocou gpu-comparison.js -->
               </tr>
               <tr>
-                <td>Price (USD)</td>
-                <td id="price1">-</td>
-                <td id="price2">-</td>
-                <td id="priceDiff">-</td>
+                <td>Price (USD)</td> <!-- Cena GPU v dolároch -->
+                <td id="price1">-</td> <!-- Cena prvej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="price2">-</td> <!-- Cena druhej GPU, napĺňaná pomocou gpu-comparison.js -->
+                <td id="priceDiff">-</td> <!-- Rozdiel v cene, vypočítaný pomocou gpu-comparison.js -->
               </tr>
             </tbody>
           </table>
@@ -131,39 +137,42 @@
       </div>
     </div>
 
+    <!-- Sekcia s grafmi výkonu pre 4K a 1440p rozlíšenie -->
     <div class="row">
       <div class="col-md-6">
         <div class="card comparison-card">
           <div class="card-header">
-            <h3 class="h5 mb-0">4K Performance</h3>
+            <h3 class="h5 mb-0">4K Performance</h3> <!-- Nadpis pre graf výkonu v 4K rozlíšení -->
           </div>
           <div class="card-body">
-            <canvas id="chart4k" class="performance-chart"></canvas>
+            <canvas id="chart4k" class="performance-chart"></canvas> <!-- Plátno pre graf 4K výkonu, napĺňané pomocou Chart.js -->
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card comparison-card">
           <div class="card-header">
-            <h3 class="h5 mb-0">1440p Performance</h3>
+            <h3 class="h5 mb-0">1440p Performance</h3> <!-- Nadpis pre graf výkonu v 1440p rozlíšení -->
           </div>
           <div class="card-body">
-            <canvas id="chart1440p" class="performance-chart"></canvas>
+            <canvas id="chart1440p" class="performance-chart"></canvas> <!-- Plátno pre graf 1440p výkonu, napĺňané pomocou Chart.js -->
           </div>
         </div>
       </div>
     </div>
   </main>
 
+  <!-- Pätička stránky -->
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-      <p class="mb-0">© 2024 GPU Comparison Project</p>
+      <p class="mb-0">© 2024 GPU Comparison Project</p> <!-- Informácia o autorských právach -->
     </div>
   </footer>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/responsive.js"></script>
-  <script src="js/gpu-comparison.js"></script>
+  <!-- Zahrnutie JavaScriptových knižníc -->
+  <script src="js/bootstrap.bundle.min.js"></script> <!-- Bootstrap knižnica pre interakcie ako rozbalenie navigácie -->
+  <script src="js/responsive.js"></script> <!-- Skript pre responzívne funkcie -->
+  <script src="js/gpu-comparison.js"></script> <!-- Skript pre logiku porovnávania GPU -->
 </body>
 
 </html>

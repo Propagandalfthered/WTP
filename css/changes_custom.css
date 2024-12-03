@@ -1,74 +1,84 @@
+/* Trieda shortcut-key (zobrazuje klávesové skratky) */
 .shortcut-key {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    margin: 0 0.25rem;
-    border-radius: 4px;
-    background-color: #e2e8f0;
-    color: #1a202c;
-    font-family: monospace;
-    font-weight: bold;
-    border: 1px solid #cbd5e0;
-    box-shadow: 0 2px 0 #cbd5e0;
+    display: inline-block; /* Element sa zobrazuje ako inline blok (kombinácia inline a block) */
+    padding: 0.25rem 0.5rem; /* Vnútorné odsadenie - hore a dole 0.25rem, vpravo a vľavo 0.5rem */
+    margin: 0 0.25rem; /* Vonkajšie odsadenie - hore a dole 0, vpravo a vľavo 0.25rem */
+    border-radius: 4px; /* Zaoblené rohy elementu o veľkosti 4px */
+    background-color: #e2e8f0; /* Svetlosivá farba pozadia */
+    color: #1a202c; /* Tmavá farba textu */
+    font-family: monospace; /* Používa písmo s pevnou šírkou znakov */
+    font-weight: bold; /* Tučné písmo */
+    border: 1px solid #cbd5e0; /* Okraj hrúbky 1px so svetlosivou farbou */
+    box-shadow: 0 2px 0 #cbd5e0; /* Tienenie, posunuté o 2px dole, farba rovnaká ako border */
 }
 
+/* Nastavenie pre tmavú tému, ak je pridaná trieda 'dark' na :root element */
 :root.dark .shortcut-key {
-    background-color: #4a5568;
-    color: #fff;
-    border-color: #2d3748;
-    box-shadow: 0 2px 0 #2d3748;
+    background-color: #4a5568; /* Tmavosivá farba pozadia pre tmavú tému */
+    color: #fff; /* Biela farba textu */
+    border-color: #2d3748; /* Farba okraja je ešte tmavšia sivá */
+    box-shadow: 0 2px 0 #2d3748; /* Tienenie zodpovedajúce okraju pre tmavú tému */
 }
 
+/* Trieda changes-header (záhlavie sekcie) */
 .changes-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
-    transition: background 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Pozadie ako lineárny gradient pod uhlom 135 stupňov, používajúci CSS premenné */
+    color: white; /* Biela farba textu */
+    padding: 2rem 0; /* Vnútorné odsadenie - hore a dole 2rem, vpravo a vľavo 0 */
+    margin-bottom: 2rem; /* Spodné odsadenie o veľkosti 2rem */
+    transition: background 0.3s ease; /* Plynulá premena farby pozadia trvajúca 0.3 sekundy */
 }
 
+/* Trieda control-card (karta s ovládaním) */
 .control-card {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border-radius: 8px; /* Zaoblené rohy karty o veľkosti 8px */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemné tienenie s nízkou nepriehľadnosťou */
+    transition: transform 0.3s ease; /* Prechod pre transformáciu, ktorý trvá 0.3 sekundy */
 }
 
+/* Pri prechode myšou nad kartou sa karta mierne posunie hore */
 .control-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Presun karty o 5px nahor */
 }
 
+/* Opätovné definovanie triedy shortcut-key (pre iný výber) */
 .shortcut-key {
-    background-color: #f8f9fa;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-    font-family: monospace;
+    background-color: #f8f9fa; /* Svetlá farba pozadia */
+    padding: 0.2rem 0.5rem; /* Upravené vnútorné odsadenie - 0.2rem hore a dole, 0.5rem vpravo a vľavo */
+    border-radius: 4px; /* Zaoblené rohy o veľkosti 4px */
+    border: 1px solid #dee2e6; /* Okraj svetlosivej farby s hrúbkou 1px */
+    font-family: monospace; /* Písmo s pevnou šírkou znakov */
 }
 
+/* Trieda sekcia_zmena (sekcia, ktorá mení svoj vzhľad) */
 .sekcia_zmena {
-    background-color: var(--background-color);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
-    transition: background-color 0.3s ease;
+    background-color: var(--background-color); /* Používa premennú pre farbu pozadia */
+    padding: 2rem; /* Vnútorné odsadenie 2rem zo všetkých strán */
+    border-radius: 8px; /* Zaoblené rohy o veľkosti 8px */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemné tienenie */
+    margin: 2rem 0; /* Horné a spodné odsadenie 2rem, žiadne bočné odsadenie */
+    transition: background-color 0.3s ease; /* Plynulá zmena farby pozadia trvajúca 0.3 sekundy */
 }
 
+/* Trieda feature-list pre zoznam funkcií, každý prvok (li - list item) */
 .feature-list li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
+    margin-bottom: 1rem; /* Spodné odsadenie o veľkosti 1rem medzi položkami */
+    padding-left: 1.5rem; /* Vnútorné odsadenie vľavo o veľkosti 1.5rem */
+    position: relative; /* Nastavuje relatívnu pozíciu pre správne umiestnenie pseudo-elementu */
 }
 
+/* Pseudo-element pred každou položkou zoznamu (bodka ako značka) */
 .feature-list li::before {
-    content: "•";
-    color: var(--accent-color);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+    content: "•"; /* Obsahuje bodku ako symbol */
+    color: var(--accent-color); /* Používa premennú pre farbu zvýraznenia */
+    font-weight: bold; /* Tučné písmo pre bodku */
+    position: absolute; /* Absolútna pozícia pre umiestnenie bodky na správne miesto */
+    left: 0; /* Umiestnenie na ľavú stranu prvku */
 }
 
+/* Globálny štýl pre telo stránky */
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--background-color); /* Používa premennú pre farbu pozadia */
+    color: var(--text-color); /* Používa premennú pre farbu textu */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Plynulá premena farby pozadia aj textu, trvajúca 0.3 sekundy */
 }

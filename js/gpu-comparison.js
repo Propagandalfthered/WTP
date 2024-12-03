@@ -1,20 +1,26 @@
+// Trieda GPUComparison (porovnanie GPU) - Vytvára triedu pre porovnanie rôznych GPU
 class GPUComparison {
+    // Konštruktor triedy, ktorý sa spustí pri vytváraní novej inštancie tejto triedy
     constructor() {
+        // Inicializácia objektu s údajmi o GPU (kľúč: názov GPU, hodnota: špecifikácie a výkon)
+        // Používame objekt, aby sme mohli uložiť rôzne špecifikácie a výkonové parametre pre jednotlivé modely GPU
         this.gpuData = {
-            'NVIDIA RTX 4090': {
-                vram: '24GB GDDR6X',
-                coreClock: '2.52 GHz',
-                tdp: '450W',
-                cores: '16384 CUDA',
-                rayTracing: 'Yes',
-                price: '1599',
-                performance: {
-                    gaming4k: 100,
-                    gaming1440p: 100,
-                    mining: 95,
-                    rendering: 100
+            'NVIDIA RTX 4090': { // Názov GPU ako kľúč
+                vram: '24GB GDDR6X', // VRAM (Video pamäť) GPU - veľkosť a typ pamäte
+                coreClock: '2.52 GHz', // Základná frekvencia jadra - rýchlosť, s ktorou pracuje jadro GPU
+                tdp: '450W', // TDP (Thermal Design Power) - spotreba energie GPU v wattoch
+                cores: '16384 CUDA', // Počet jadier CUDA (paralelné výpočtové jadrá používané na spracovanie grafických úloh)
+                rayTracing: 'Yes', // Podpora ray tracingu - technológia na realistické vykresľovanie svetla a tieňov
+                price: '1599', // Cena GPU v USD
+                performance: { // Výkon GPU v rôznych kategóriách
+                    gaming4k: 100, // Výkon pri 4K hrách (hodnotenie od 0 do 100)
+                    gaming1440p: 100, // Výkon pri 1440p hrách
+                    mining: 95, // Výkon pri ťažení kryptomien
+                    rendering: 100 // Výkon pri renderovaní (napríklad videí alebo grafiky)
                 }
             },
+            // Podobne sú definované ďalšie GPU vrátane modelov od NVIDIA, AMD a Intel
+            // Každé GPU obsahuje rovnakú štruktúru informácií
             'NVIDIA RTX 4080': {
                 vram: '16GB GDDR6X',
                 coreClock: '2.51 GHz',
@@ -199,53 +205,71 @@ class GPUComparison {
             }
         };
 
-        this.init();
+     // Volanie inicializačnej funkcie init(), aby sa nastavili základné prvky po vytvorení inštancie
+     this.init();
     }
 
+    // Inicializačná funkcia - nastavuje HTML elementy a udalosti, ktoré budú neskôr používané
     init() {
+        // Získa HTML elementy pre výber GPU pomocou ID (id je atribút v HTML, ktorý identifikuje konkrétny element)
+        const select1 = document.getElementById('gpu1Select'); // HTML element pre výber prvého GPU
+        const select2 = document.getElementById('gpu2Select'); // HTML element pre výber druhého GPU
 
-        const select1 = document.getElementById('gpu1Select');
-        const select2 = document.getElementById('gpu2Select');
-
+        // Skontroluje, či obidva HTML elementy existujú na stránke
         if (select1 && select2) {
+            // Naplní oba výbery dostupnými GPU možnosťami
+            this.populateSelect(select1); // Naplní prvý výber
+            this.populateSelect(select2); // Naplní druhý výber
 
-            this.populateSelect(select1);
-            this.populateSelect(select2);
+            // Pridáva udalosti, ktoré sa majú vykonať, keď sa vyberie nové GPU v oboch výberoch
+            // 'change' je názov udalosti, ktorá sa stane, keď sa zmení hodnota vo výbere
+            select1.addEventListener('change', () => this.updateComparison()); // Aktualizuje porovnanie pri zmene výberu
+            select2.addEventListener('change', () => this.updateComparison()); // Aktualizuje porovnanie pri zmene výberu
 
-            select1.addEventListener('change', () => this.updateComparison());
-            select2.addEventListener('change', () => this.updateComparison());
-
+            // Nastaví predvolenú možnosť pre druhé GPU na druhý index (t.j. druhé GPU v zozname)
             select2.selectedIndex = 1;
+            // Spustí aktualizáciu porovnania hneď po inicializácii, aby sa zobrazili údaje aj bez výberu používateľom
             this.updateComparison();
         }
 
+        // Inicializácia grafov pre porovnanie výkonu medzi dvoma GPU
         this.initCharts();
     }
 
+    // Funkcia na naplnenie HTML elementu typu select možnosťami GPU z gpuData
     populateSelect(select) {
-        select.innerHTML = '<option value="">Select GPU</option>';
+        // Nastaví základnú možnosť v select (výber), ktorá používateľovi povie, aby si vybral GPU
+        select.innerHTML = '<option value="">Select GPU</option>'; // Nastaví HTML obsahu výberového elementu predvolenú hodnotu
+        // Prechádza všetky kľúče v objekte gpuData (každý kľúč je názov GPU)
         Object.keys(this.gpuData).forEach(gpu => {
-            select.innerHTML += `<option value="${gpu}">${gpu}</option>`;
+            // Pridáva každé GPU ako možnosť do výberu s názvom GPU ako textom
+            select.innerHTML += `<option value="${gpu}">${gpu}</option>`; // `option` element v HTML predstavuje jednotlivú možnosť vo výbere
         });
     }
 
+    // Funkcia na aktualizáciu porovnania medzi dvoma vybranými GPU
     updateComparison() {
-        const gpu1Name = document.getElementById('gpu1Select').value;
-        const gpu2Name = document.getElementById('gpu2Select').value;
+        // Získa názvy vybraných GPU z HTML select elementov
+        const gpu1Name = document.getElementById('gpu1Select').value; // Hodnota prvého vybraného GPU
+        const gpu2Name = document.getElementById('gpu2Select').value; // Hodnota druhého vybraného GPU
 
-        if (!gpu1Name || !gpu2Name) return;
+        // Ak nie sú obe GPU vybrané, tak funkcia ukončí svoju činnosť
+        if (!gpu1Name || !gpu2Name) return; // Ak je jedno z GPU nevybrané, funkcia sa neprevedie ďalej
 
-        const gpu1 = this.gpuData[gpu1Name];
-        const gpu2 = this.gpuData[gpu2Name];
+        // Získa údaje (špecifikácie) o oboch vybraných GPU z objektu gpuData
+        const gpu1 = this.gpuData[gpu1Name]; // Dáta pre prvé GPU
+        const gpu2 = this.gpuData[gpu2Name]; // Dáta pre druhé GPU
 
-        this.updateSpecsTable(gpu1, gpu2);
-
-        this.updateCharts(gpu1, gpu2);
+        // Aktualizuje tabuľku špecifikácií a grafy na základe vybraných GPU
+        this.updateSpecsTable(gpu1, gpu2); // Aktualizuje tabuľku
+        this.updateCharts(gpu1, gpu2); // Aktualizuje grafy
     }
 
+    // Funkcia na aktualizáciu tabuľky so špecifikáciami pre obe GPU
     updateSpecsTable(gpu1, gpu2) {
+        // Polia, ktoré budú porovnávané, napr. VRAM, frekvencia jadra, spotreba atď.
         const fields = ['vram', 'coreClock', 'tdp', 'cores', 'rayTracing', 'price'];
-        const displayNames = {
+        const displayNames = { // Mapa medzi internými názvami a zobrazenými názvami na obrazovke
             vram: 'VRAM',
             coreClock: 'Core Clock',
             tdp: 'TDP',
@@ -254,58 +278,65 @@ class GPUComparison {
             price: 'Price (USD)'
         };
 
+        // Prechádza cez každé pole a aktualizuje hodnoty v tabuľke HTML pre obe GPU
         fields.forEach(field => {
-            document.getElementById(`${field}1`).textContent = gpu1[field];
-            document.getElementById(`${field}2`).textContent = gpu2[field];
+            // Nastaví hodnotu v tabuľke pre prvé GPU
+            document.getElementById(`${field}1`).textContent = gpu1[field]; // Nájde HTML element pre pole prvého GPU a nastaví jeho hodnotu
+            // Nastaví hodnotu v tabuľke pre druhé GPU
+            document.getElementById(`${field}2`).textContent = gpu2[field]; // Nájde HTML element pre pole druhého GPU a nastaví jeho hodnotu
 
-            const diff = document.getElementById(`${field}Diff`);
-            if (field === 'price' || field === 'tdp') {
-                const val1 = parseInt(gpu1[field]);
-                const val2 = parseInt(gpu2[field]);
-                const difference = val2 - val1;
-                diff.textContent = difference > 0 ? `+${difference}` : difference;
-                diff.className = difference > 0 ? 'text-danger' : 'text-success';
+            const diff = document.getElementById(`${field}Diff`); // Nájde HTML element, ktorý zobrazuje rozdiel medzi dvoma hodnotami
+            if (field === 'price' || field === 'tdp') { // Ak je pole cena alebo spotreba (TDP), vypočíta rozdiel
+                const val1 = parseInt(gpu1[field]); // Prevedie hodnotu prvého GPU na celé číslo
+                const val2 = parseInt(gpu2[field]); // Prevedie hodnotu druhého GPU na celé číslo
+                const difference = val2 - val1; // Vypočíta rozdiel medzi hodnotami
+                diff.textContent = difference > 0 ? `+${difference}` : difference; // Ak je rozdiel kladný, pridá znak plus pred hodnotu
+                diff.className = difference > 0 ? 'text-danger' : 'text-success'; // Nastaví triedu pre štýl: kladné rozdiely červené, záporné zelené
             } else {
-                diff.textContent = '-';
+                diff.textContent = '-'; // Ak sa rozdiel nepočíta (napr. pre textové hodnoty), nastaví pomlčku
             }
         });
     }
 
+    // Inicializácia grafov pre porovnanie výkonu medzi dvoma GPU
     initCharts() {
-        const ctx4k = document.getElementById('chart4k').getContext('2d');
-        const ctx1440p = document.getElementById('chart1440p').getContext('2d');
+        // Získa kontext (2D kresliaci priestor) pre grafy z HTML canvas prvkov
+        const ctx4k = document.getElementById('chart4k').getContext('2d'); // Kontext pre graf 4K porovnania
+        const ctx1440p = document.getElementById('chart1440p').getContext('2d'); // Kontext pre graf 1440p porovnania
 
+        // Vytvára nový graf pomocou knižnice Chart.js pre 4K porovnanie
         this.chart4k = new Chart(ctx4k, {
-            type: 'bar',
+            type: 'bar', // Typ grafu je stĺpcový (bar chart)
             data: {
-                labels: ['Gaming', 'Mining', 'Rendering'],
+                labels: ['Gaming', 'Mining', 'Rendering'], // Osy pre jednotlivé kategórie výkonu (Herný výkon, Ťažba, Renderovanie)
                 datasets: [{
-                    label: 'GPU 1',
-                    data: [0, 0, 0],
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    label: 'GPU 1', // Označenie pre prvé GPU
+                    data: [0, 0, 0], // Počiatočné hodnoty dát (nuly, budú aktualizované neskôr)
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)' // Farba pruhov pre prvé GPU
                 }, {
-                    label: 'GPU 2',
-                    data: [0, 0, 0],
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                    label: 'GPU 2', // Označenie pre druhé GPU
+                    data: [0, 0, 0], // Počiatočné hodnoty dát (nuly, budú aktualizované neskôr)
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)' // Farba pruhov pre druhé GPU
                 }]
             },
             options: {
-                responsive: true,
+                responsive: true, // Graf je responzívny, automaticky sa prispôsobuje veľkosti obrazovky
                 plugins: {
                     title: {
-                        display: true,
-                        text: '4K Performance Comparison'
+                        display: true, // Zobrazí názov grafu
+                        text: '4K Performance Comparison' // Text názvu grafu (porovnanie výkonu v 4K rozlíšení)
                     }
                 },
                 scales: {
                     y: {
-                        beginAtZero: true,
-                        max: 100
+                        beginAtZero: true, // Y os začína na nule (minimum)
+                        max: 100 // Maximálna hodnota Y osi je 100
                     }
                 }
             }
         });
 
+        // Vytvára nový graf pre 1440p porovnanie (veľmi podobné ako pre 4K graf)
         this.chart1440p = new Chart(ctx1440p, {
             type: 'bar',
             data: {
@@ -325,7 +356,7 @@ class GPUComparison {
                 plugins: {
                     title: {
                         display: true,
-                        text: '1440p Performance Comparison'
+                        text: '1440p Performance Comparison' // Text názvu grafu (porovnanie výkonu v 1440p rozlíšení)
                     }
                 },
                 scales: {
@@ -338,39 +369,46 @@ class GPUComparison {
         });
     }
 
+    // Funkcia na aktualizáciu grafov podľa zvolených GPU
     updateCharts(gpu1, gpu2) {
-        this.chart4k.data.datasets[0].label = 'GPU 1';
-        this.chart4k.data.datasets[1].label = 'GPU 2';
+        // Nastavuje popisky (label) pre grafy na základe aktuálne zvolených GPU
+        this.chart4k.data.datasets[0].label = 'GPU 1'; // Označenie pre prvé GPU
+        this.chart4k.data.datasets[1].label = 'GPU 2'; // Označenie pre druhé GPU
 
+        // Nastavuje dáta pre 4K graf pre obe GPU (herné, ťažobné, a renderovacie hodnoty)
         this.chart4k.data.datasets[0].data = [
-            gpu1.performance.gaming4k,
-            gpu1.performance.mining,
-            gpu1.performance.rendering
+            gpu1.performance.gaming4k, // Hodnota herného výkonu pre GPU 1
+            gpu1.performance.mining, // Hodnota ťažobného výkonu pre GPU 1
+            gpu1.performance.rendering // Hodnota renderovacieho výkonu pre GPU 1
         ];
 
         this.chart4k.data.datasets[1].data = [
-            gpu2.performance.gaming4k,
-            gpu2.performance.mining,
-            gpu2.performance.rendering
+            gpu2.performance.gaming4k, // Hodnota herného výkonu pre GPU 2
+            gpu2.performance.mining, // Hodnota ťažobného výkonu pre GPU 2
+            gpu2.performance.rendering // Hodnota renderovacieho výkonu pre GPU 2
         ];
 
+        // Nastavuje dáta pre 1440p graf pre obe GPU (rovnaké kategórie ako pre 4K)
         this.chart1440p.data.datasets[0].data = [
-            gpu1.performance.gaming1440p,
-            gpu1.performance.mining,
-            gpu1.performance.rendering
+            gpu1.performance.gaming1440p, // Hodnota herného výkonu pre GPU 1 v rozlíšení 1440p
+            gpu1.performance.mining, // Hodnota ťažobného výkonu pre GPU 1
+            gpu1.performance.rendering // Hodnota renderovacieho výkonu pre GPU 1
         ];
 
         this.chart1440p.data.datasets[1].data = [
-            gpu2.performance.gaming1440p,
-            gpu2.performance.mining,
-            gpu2.performance.rendering
+            gpu2.performance.gaming1440p, // Hodnota herného výkonu pre GPU 2 v rozlíšení 1440p
+            gpu2.performance.mining, // Hodnota ťažobného výkonu pre GPU 2
+            gpu2.performance.rendering // Hodnota renderovacieho výkonu pre GPU 2
         ];
 
-        this.chart4k.update();
-        this.chart1440p.update();
+        // Aktualizuje oba grafy, aby sa nové dáta zobrazili
+        this.chart4k.update(); // Aktualizácia 4K grafu
+        this.chart1440p.update(); // Aktualizácia 1440p grafu
     }
 }
 
+// Spustenie skriptu po načítaní celej stránky (DOMContentLoaded - keď sa HTML načíta)
 document.addEventListener('DOMContentLoaded', () => {
+    // Vytvorí novú inštanciu triedy GPUComparison a inicializuje ju
     const gpuComparison = new GPUComparison();
 });

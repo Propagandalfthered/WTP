@@ -1,176 +1,202 @@
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #34495e;
-  --accent-color: #3498db;
-  --text-color: #2c3e50;
-  --text-color-light: #ffffff;
-  --background-color: #ecf0f1;
-  --card-background: #ffffff;
-  --button-background: var(--secondary-color);
-  --button-text: #ffffff;
-  --hover-color: #2980b9;
-  --comparison-text: #2c3e50;
+  /* Definuje hlavne farby pre svetlý motív */
+  --primary-color: #2c3e50; /* Hlavná farba používaná na prvky, ako napr. pozadie pätičky */
+  --secondary-color: #34495e; /* Sekundárna farba používaná na menej dôležité prvky */
+  --accent-color: #3498db; /* Akcentová farba používaná napr. na odkazy a tlačidlá */
+  --text-color: #2c3e50; /* Hlavná farba textu */
+  --text-color-light: #ffffff; /* Svetlý text, zvyčajne na tmavom pozadí */
+  --background-color: #ecf0f1; /* Farba pozadia */
+  --card-background: #ffffff; /* Farba pozadia kariet */
+  --button-background: var(--secondary-color); /* Farba pozadia tlačidiel */
+  --button-text: #ffffff; /* Farba textu na tlačidlách */
+  --hover-color: #2980b9; /* Farba používaná pri hover efektoch */
+  --comparison-text: #2c3e50; /* Farba textu v porovnávacích sekciách */
 }
 
 :root.dark {
-  --primary-color: #1b1b1b;
-  --secondary-color: #333333;
-  --accent-color: #3498db;
-  --text-color: #f5f5f5;
-  --text-color-light: #f5f5f5;
-  --background-color: #121212;
-  --card-background: #1e1e1e;
-  --button-background: #444444;
-  --button-text: #f5f5f5;
-  --hover-color: #2980b9;
-  --comparison-text: #f5f5f5;
+  /* Definuje farby pre tmavý motív */
+  --primary-color: #1b1b1b; /* Hlavná tmavá farba pre tmavý motív */
+  --secondary-color: #333333; /* Sekundárna tmavá farba */
+  --accent-color: #3498db; /* Akcentová farba zostáva rovnaká ako v svetlom motíve */
+  --text-color: #f5f5f5; /* Svetlý text na tmavom pozadí */
+  --text-color-light: #f5f5f5; /* Svetlý text, konzistentný na viacerých miestach */
+  --background-color: #121212; /* Tmavá farba pozadia */
+  --card-background: #1e1e1e; /* Farba pozadia kariet pre tmavý motív */
+  --button-background: #444444; /* Tmavá farba pre tlačidlá */
+  --button-text: #f5f5f5; /* Svetlý text na tlačidlách */
+  --hover-color: #2980b9; /* Farba pri hover efektoch (rovnaká ako v svetlom motíve) */
+  --comparison-text: #f5f5f5; /* Farba textu pri porovnávacích sekciách */
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* Nastavuje štandardné hodnoty pre všetky prvky */
+  margin: 0; /* Vynuluje margin pre všetky prvky */
+  padding: 0; /* Vynuluje padding pre všetky prvky */
+  box-sizing: border-box; /* Zabezpečuje, že padding a border sú zahrnuté vo veľkosti prvku */
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Všeobecné štýly pre telo stránky */
+  font-family: Arial, sans-serif; /* Nastavuje font pre celý dokument */
+  background-color: var(--background-color); /* Používa dynamickú farbu pozadia, ktorá sa mení podľa motívu */
+  color: var(--text-color); /* Nastavuje farbu textu */
+  line-height: 1.6; /* Nastavuje medziriadkový rozostup pre čitateľnosť */
+  margin: 0; /* Vynuluje štandardný okraj tela */
+  padding: 0; /* Vynuluje padding */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Pridáva plynulý prechod pri zmene farieb */
 }
 
 .container {
-  margin: 0 auto;
-  padding: 0 15px;
-  width: 90%;
-  max-width: 1200px;
+  /* Nastavenie štýlu kontajnera, centrálny blok pre obsah */
+  margin: 0 auto; /* Horizontálne centrovanie obsahu */
+  padding: 0 15px; /* Horizontálny padding pre členenie obsahu */
+  width: 90%; /* Nastavuje šírku na 90% dostupného priestoru */
+  max-width: 1200px; /* Maximálna šírka pre väčšie obrazovky */
 }
 
 .nav-list {
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  /* Štýl pre navigačný zoznam */
+  display: flex; /* Flexbox pre jednoduché zarovnanie prvkov */
+  gap: 1rem; /* Rozostupy medzi jednotlivými položkami */
+  padding: 0; /* Vynuluje padding zoznamu */
+  margin: 0; /* Vynuluje okraj zoznamu */
+  list-style: none; /* Odstráni štandardné číslovanie alebo odrážky */
 }
 
 .nav-link {
-  color: var(--text-color-light);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  /* Štýly pre navigačné odkazy */
+  color: var(--text-color-light); /* Svetlý text pre odkazy, vhodný pre tmavšie pozadie */
+  text-decoration: none; /* Odstráni podčiarknutie odkazu */
+  padding: 0.5rem 1rem; /* Vytvára vnútrorný rozostup okolo odkazu */
+  border-radius: 4px; /* Zaoblenie rohov odkazu */
+  transition: background-color 0.3s ease; /* Plynulý prechod farby pozadia pri hover */
 }
 
 .nav-link:hover,
 .nav-link.active {
-  background-color: var(--accent-color);
+  /* Štýly pri hover alebo aktívnom odkaze */
+  background-color: var(--accent-color); /* Zvýraznenie odkazu pri hover alebo pri jeho aktivite */
 }
 
 .gpu-grid {
-  display: grid;
-  gap: 1.5rem;
-  padding: 2rem 0;
+  /* Nastavenie mriežky pre zoznam GPU kariet */
+  display: grid; /* Používa sa CSS Grid pre členenie obsahu do stĺpov a riadkov */
+  gap: 1.5rem; /* Vytvára rozostup medzi jednotlivými prvkami mriežky */
+  padding: 2rem 0; /* Horný a spodný padding pre oddelenie mriežky od ostatného obsahu */
 }
 
 .card {
-  background: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 1.5rem;
+  /* Nastavenie štýlu kariet, napr. produktov alebo informácií */
+  background: var(--card-background); /* Farba pozadia karty, dynamická pre svetlý a tmavý motív */
+  border-radius: 8px; /* Zaoblenie rohov karty */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň pod kartou pre prídanie hĺbky */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Plynulý prechod pri zmene pozície a tieňu */
+  margin-bottom: 1.5rem; /* Spodný okraj pre oddelenie kariet od seba */
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* Efekt pri hover nad kartou */
+  transform: translateY(-3px); /* Posunutie karty mierne nahor pre interaktívny efekt */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Zvýraznenie tieňu pri hover */
 }
 
 .sekcia_zmena {
-  padding: 2rem;
-  margin: 2rem 0;
-  font-size: inherit;
+  /* Sekcia pre zmenu obsahu */
+  padding: 2rem; /* Horný a spodný padding pre lepšie oddelenie sekcie */
+  margin: 2rem 0; /* Horný a spodný margin pre oddelenie od ostatného obsahu */
+  font-size: inherit; /* Dedičná veľkosť písma */
 }
 
 .theme-switch-button {
-  background: var(--button-background);
-  color: var(--button-text);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  /* Tlačidlo na prepínanie motívu */
+  background: var(--button-background); /* Dynamická farba tlačidla pre svetlý a tmavý motív */
+  color: var(--button-text); /* Farba textu na tlačidle */
+  padding: 0.5rem 1rem; /* Padding tlačidla pre pohodlné kliknutie */
+  border-radius: 4px; /* Zaoblenie rohov tlačidla */
+  border: none; /* Odstránenie štandardného okraja tlačidla */
+  cursor: pointer; /* Ukazovateľ sa zmení na kurzor pri hover */
+  transition: background-color 0.3s ease; /* Plynulý prechod farby pozadia pri hover */
 }
 
 .theme-switch-button:hover {
-  background: var(--hover-color);
+  /* Efekt pri hover nad tlačidlom prepínania motívu */
+  background: var(--hover-color); /* Zvýraznenie farby pozadia pri hover */
 }
 
 @media (max-width: 550px) {
   body {
-    font-size: 14px;
-    line-height: 1.5;
+    /* Štýly pre malé obrazovky */
+    font-size: 14px; /* Zmenšená veľkosť písma pre lepšiu čitateľnosť na malých zariadeniach */
+    line-height: 1.5; /* Mierne znížený medziriadkový rozostup */
   }
 
   .container {
-    width: 95%;
-    padding: 0 10px;
+    /* Úpravy pre kontajner na malých obrazovkách */
+    width: 95%; /* Zvýšenie šírky na maximum dostupného priestoru */
+    padding: 0 10px; /* Zmenšený padding pre lepšie využitie priestoru */
   }
 
   .nav-list {
-    flex-direction: column;
-    gap: 10px;
+    /* Navigácia na malých obrazovkách */
+    flex-direction: column; /* Položky navigácie sa zarovnajú vertikálne */
+    gap: 10px; /* Menší rozostup medzi položkami */
   }
 
   .gpu-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 15px 0;
+    /* Nastavenie mriežky pre malé obrazovky */
+    grid-template-columns: 1fr; /* Jeden stĺpec pre lepšie zobrazenie na úzkych obrazovkách */
+    gap: 15px; /* Zmenšený rozostup medzi prvkami */
+    padding: 15px 0; /* Zmenšený horný a spodný padding */
   }
 
   .card {
-    padding: 15px;
-    margin-bottom: 15px;
+    /* Karty na malých obrazovkách */
+    padding: 15px; /* Padding prispôsobený menším obrazovkám */
+    margin-bottom: 15px; /* Menší spodný okraj medzi kartami */
   }
 
   .sekcia_zmena {
-    padding: 1rem;
-    margin: 1rem 0;
+    /* Sekcia zmeny na malých obrazovkách */
+    padding: 1rem; /* Zmenšený padding pre lepšie využitie priestoru */
+    margin: 1rem 0; /* Zmenšený margin pre lepšie členenie */
   }
 }
 
 @media (min-width: 551px) and (max-width: 700px) {
   body {
-    font-size: 14.5px;
-    line-height: 1.55;
+    /* Štýly pre stredne malé obrazovky */
+    font-size: 14.5px; /* Mierne väčšie písmo pre lepšiu čitateľnosť */
+    line-height: 1.55; /* Zvýšený medziriadkový rozostup */
   }
 
   .container {
-    width: 92%;
-    padding: 0 12px;
+    /* Úpravy kontajnera */
+    width: 92%; /* Šírka prispôsobená pre väčšie obrazovky */
+    padding: 0 12px; /* Mierne väčší padding */
   }
 
   .gpu-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    /* Nastavenie mriežky */
+    grid-template-columns: repeat(2, 1fr); /* Dva stĺpce pre stredne veľké obrazovky */
+    gap: 18px; /* Väčší rozostup medzi prvkami */
   }
 }
 
 @media (min-width: 701px) and (max-width: 850px) {
   body {
-    font-size: 15px;
-    line-height: 1.6;
+    /* Štýly pre stredné obrazovky */
+    font-size: 15px; /* Zvýšená veľkosť písma */
+    line-height: 1.6; /* Optimálny medziriadkový rozostup */
   }
 
   .container {
+    /* Úpravy kontajnera */
     width: 90%;
     padding: 0 15px;
   }
 
   .gpu-grid {
+    /* Nastavenie mriežky */
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
@@ -178,16 +204,19 @@ body {
 
 @media (min-width: 851px) and (max-width: 900px) {
   body {
+    /* Štýly pre väčšie stredné obrazovky */
     font-size: 15.5px;
     line-height: 1.65;
   }
 
   .container {
+    /* Úpravy kontajnera */
     width: 88%;
     padding: 0 18px;
   }
 
   .gpu-grid {
+    /* Nastavenie mriežky */
     grid-template-columns: repeat(2, 1fr);
     gap: 22px;
   }
@@ -195,16 +224,19 @@ body {
 
 @media (min-width: 901px) and (max-width: 1250px) {
   body {
+    /* Štýly pre veľké obrazovky */
     font-size: 16px;
     line-height: 1.7;
   }
 
   .container {
+    /* Úpravy kontajnera */
     width: 85%;
     max-width: 1200px;
   }
 
   .gpu-grid {
+    /* Nastavenie mriežky */
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
   }
@@ -212,6 +244,7 @@ body {
 
 @media (min-width: 1251px) and (max-width: 1300px) {
   body {
+    /* Štýly pre ešte väčšie obrazovky */
     font-size: 16.5px;
     line-height: 1.75;
   }
