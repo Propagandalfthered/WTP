@@ -65,7 +65,7 @@ XAMPP/WAMP/LAMP
 ### Frontend
 ```bash
 # Klonovanie repozitára
-git clone https://github.com/yourusername/gpu-comparison.git
+git clone https://github.com/Propagandalfthered/WTP.git
 
 # Inštalácia závislostí
 cd gpu-comparison/frontend
