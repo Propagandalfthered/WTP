@@ -1,213 +1,156 @@
-# 🎮 Porovnávací Systém GPU
+# 🎮 GPU Comparison Platform
 
-## 📝 Popis Projektu
-Interaktívna webová stránka vyvinutá v rámci zadania WT 2024, zameraná na porovnávanie grafických procesorov (GPU). Projekt kladie dôraz na responzívny dizajn, prístupnosť a používateľskú prívetivosť.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-green.svg)
+![React](https://img.shields.io/badge/React-18.3-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)
 
-![Štruktúra Projektu](optimization/wireframes/structure-diagram.svg)
+Interaktívny systém na porovnávanie grafických procesorov vytvorený v rámci zadania Webových Technológií 2024. Projekt kombinuje moderné technológie frontendového a backendového vývoja s dôrazom na používateľskú prívetivosť a prístupnosť.
 
-## 🎯 Cieľ Projektu
-Hlavným cieľom projektu je vytvoriť komplexný systém na porovnávanie GPU s dôrazom na:
-- Responzívny dizajn pre rôzne zariadenia
-- Optimalizáciu používateľského rozhrania
-- Prístupnosť pre hendikepovaných používateľov
-- Implementáciu moderných webových technológií
+## 🎯 Hlavné Funkcie
 
-## 🚀 Kľúčové Funkcie
-### Porovnávanie GPU
+### 🔄 Porovnávanie GPU
 - Detailné porovnanie špecifikácií
 - Interaktívne výkonnostné grafy
 - Cenové porovnanie
-- Analýza pomeru výkon/cena
+- Vizualizácia pomeru výkon/cena
+- Radarové diagramy výkonu
 
-### Prispôsobiteľné Rozhranie
-- Tmavý/Svetlý režim
-- Nastaviteľná veľkosť obsahu
-- Tri spôsoby zmeny veľkosti:
-  * Tlačidlá
-  * Klávesové skratky
-  * Rozbaľovací zoznam
+### 👥 Správa Používateľov
+- Bezpečná registrácia
+- GDPR kompatibilita
+- Správa používateľských dát
+- Pokročilé filtrovanie
 
-### Prístupnosť
+### 🎨 Moderné UI
+- Prepínanie Svetlej/Tmavej témy
+- Responzívny dizajn
+- Prispôsobiteľná veľkosť obsahu
+- Podpora viacerých zariadení
+
+### ♿ Prístupnosť
+- WCAG 2.1 štandardy
+- Klávesové skratky
 - Podpora čítačiek obrazovky
-- Klávesová navigácia
-- Vysoký kontrast
-- Prispôsobiteľná veľkosť textu
+- Nastaviteľné veľkosti písma
 
-## 🛠 Použité Technológie
+## 🛠️ Technológie
+
 ### Frontend
-- HTML5
-- CSS3 (Flexbox + Grid)
-- JavaScript
-- Bootstrap 5
-- Chart.js
+- React 18.3
+- Vite
+- Tailwind CSS
+- React Router
+- Recharts
+- Framer Motion
+- Lucide React
 
-### Nástroje pre Vývoj
-- Visual Studio Code
-- Git
-- Chrome DevTools
-- Figma (pre wireframes)
+### Backend
+- PHP 7.4
+- MySQL
+- REST API
+- BCrypt
+- PDO
 
-## 📱 Podporované Rozlíšenia
-Stránka je optimalizovaná pre nasledujúce rozlíšenia:
-1. **Mobilné zariadenia**
-   - Do 550px
-   - Prispôsobené rozloženie
-   - Zjednodušená navigácia
+## ⚙️ Inštalácia
 
-2. **Tablety**
-   - Do 850px
-   - Hybridné rozloženie
-   - Optimalizované menu
+### Požiadavky
+```bash
+Node.js 16+
+PHP 7.4+
+MySQL 5.7+
+XAMPP/WAMP/LAMP
+```
 
-3. **Desktopy**
-   - Do 1250px
-   - Plné rozloženie
-   - Rozšírené funkcie
+### Frontend
+```bash
+# Klonovanie repozitára
+git clone https://github.com/Propagandalfthered/WTP.git
 
-4. **Veľké Obrazovky**
-   - Do 1400px
-   - Maximálne využitie priestoru
-   - Multi-kolónkové zobrazenie
+# Inštalácia závislostí
+cd gpu-comparison/frontend
+npm install
+
+# Spustenie vývojového servera
+npm run dev
+```
+
+### Backend
+1. Nainštalujte XAMPP/WAMP/LAMP
+2. Skopírujte `/backend` do `/htdocs/wtp/backend`
+3. Vytvorte databázu `registracia`
+4. Importujte schému
+5. Upravte konfiguráciu v `db_config.php`
 
 ## 📂 Štruktúra Projektu
+
 ```
-📦 GPU-Comparison-Project
- ┣ 📂 css
- ┃ ┗ 📜 style.css                 # Hlavný CSS súbor s media queries
- ┣ 📂 js
- ┃ ┣ 📜 bootstrap.bundle.js       # Bootstrap JavaScript
- ┃ ┣ 📜 chart.js                  # Grafy a vizualizácie
- ┃ ┣ 📜 gpu-comparison.js         # Logika porovnávania
- ┃ ┣ 📜 loadCSS.js               # Načítanie CSS súborov
- ┃ ┣ 📜 resize.js                # Zmena veľkosti obsahu
- ┃ ┗ 📜 responsive.js            # Responzívne funkcie
- ┣ 📂 optimization
- ┃ ┗ 📂 wireframes               # Wireframes a návrhy
- ┃   ┣ 📜 changes-wireframe.svg
- ┃   ┣ 📜 comparison-wireframe.svg
- ┃   ┣ 📜 homepage-wireframe.svg
- ┃   ┗ 📜 structure-diagram.svg
- ┣ 📜 changes.html               # Stránka zmien
- ┣ 📜 index.html                 # Hlavná stránka
- ┣ 📜 sub.html                   # Stránka porovnania
- ┗ 📜 README.md
+gpu-comparison/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── UserManager.jsx
+│   │   │   ├── GpuComparison.jsx
+│   │   │   └── ...
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Compare.jsx
+│   │   │   └── ...
+│   │   └── assets/
+│   ├── public/
+│   └── package.json
+├── backend/
+│   ├── register.php
+│   ├── manager.php
+│   └── db_config.php
+└── dokumentacia/
+    └── documentation.md
 ```
 
-## 📑 Popis Stránok
-### 1. Hlavná Stránka (index.html)
-- Využíva Grid Layout
-- Zobrazenie dostupných GPU
-- Rýchly prístup k porovnaniu
-- Responzívny dizajn
+## 🔧 Konfigurácia
 
-### 2. Porovnávacia Stránka (sub.html)
-- Postavená na Bootstrap 5
-- Interaktívne porovnanie
-- Výkonnostné grafy
-- Detailné špecifikácie
-
-### 3. Stránka Zmien (changes.html)
-- Sekcia "sekcia_zmena"
-- Ovládanie veľkosti obsahu
-- Informácie o vylepšeniach
-- Prístupové funkcie
-
-## ⚙️ JavaScript Funkcionalita
-### loadCSS.js
+### Frontend
 ```javascript
-// Načítanie CSS súborov podľa rozlíšenia
-function loadCSSForResolution() {
-    // Implementácia
-}
+// vite.config.js
+export default defineConfig({
+  server: {
+    proxy: {
+      '/api': 'http://localhost/wtp/backend'
+    }
+  }
+})
 ```
 
-### resize.js
-```javascript
-// Zmena veľkosti obsahu
-class ContentResizer {
-    // Implementácia
-}
+### Backend
+```php
+// db_config.php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registracia";
 ```
 
-### responsive.js
-```javascript
-// Responzívne funkcie
-class ThemeManager {
-    // Implementácia
-}
-```
+## 📱 Responzívny Dizajn
 
-## 🎨 CSS Implementácia
-### Media Queries
-```css
-/* Mobilné zariadenia */
-@media (max-width: 550px) {
-    // Štýly
-}
+### Podporované Rozlíšenia
+- **Mobilné**: do 550px
+- **Tablet**: do 850px
+- **Desktop**: do 1250px
+- **Large**: do 1400px
 
-/* Tablety */
-@media (max-width: 850px) {
-    // Štýly
-}
+### Klávesové Skratky
+- `Shift + 1`: Malá veľkosť
+- `Shift + 2`: Stredná veľkosť
+- `Shift + 3`: Veľká veľkosť
 
-/* Desktopy */
-@media (max-width: 1250px) {
-    // Štýly
-}
-
-/* Veľké obrazovky */
-@media (max-width: 1400px) {
-    // Štýly
-}
-```
-
-## ⌨️ Klávesové Skratky
-- `Shift + 1`: Malá veľkosť textu
-- `Shift + 2`: Stredná veľkosť textu
-- `Shift + 3`: Veľká veľkosť textu
-
-## 🔍 Optimalizácia
-### Výkon
-- Optimalizované obrázky
-- Minimalizované CSS a JS
-- Efektívne načítanie zdrojov
-- Cachovanie používateľských nastavení
-
-### SEO
-- Sémantické HTML
-- Meta tagy
-- Štruktúrované dáta
-- Optimalizované nadpisy
-
-### Prístupnosť
-- ARIA atribúty
-- Klávesová navigácia
-- Alternatívne texty
-- Kontrastné farby
-
-## 🛡️ Bezpečnosť
-- Validácia vstupov
-- XSS ochrana
+## 🔒 Bezpečnosť
+- SQL Injection ochrana
+- XSS prevencia
 - CSRF ochrana
-- Bezpečné načítanie zdrojov
-
-## 📊 Funkcie Porovnávania GPU
-### Podporované Metriky
-- Výkon v hrách
-- Výkon v renderovaní
-- Energetická efektivita
-- Teplotné charakteristiky
-
-### Vizualizácie
-- Výkonnostné grafy
-- Porovnávacie tabuľky
-- Radarové diagramy
-- Teplotné mapy
-
-## 🔄 Verzia a Aktualizácie
-- Verzia: 1.2
-- Posledná aktualizácia: November 2024
-- Stav: Pripravené na použitie
+- Hashovanie hesiel
+- Input validácia
+- Bezpečné sessions
 
 ## 👥 Autori
 - Daniel Sisák
@@ -215,24 +158,54 @@ class ThemeManager {
 - Samuel Furda
 - Viktor Olšavský
 
+## 📄 API Dokumentácia
+
+### Registrácia
+```http
+POST /api/register.php
+Content-Type: application/json
+
+{
+  "name": "string",
+  "birth_year": "number",
+  "country": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string?",
+  "notes": "string?"
+}
+```
+
+### Správa Používateľov
+```http
+GET /api/manager.php
+GET /api/manager.php?delete={id}
+```
+
+## 🤝 Prispievanie
+
+1. Forkujte repozitár
+2. Vytvorte feature branch (`git checkout -b feature/amazing-feature`)
+3. Commitnite zmeny (`git commit -m 'Add amazing feature'`)
+4. Pushnite branch (`git push origin feature/amazing-feature`)
+5. Otvorte Pull Request
+
 ## 📋 Požiadavky Projektu
-Projekt bol vyvinutý v súlade s požiadavkami zadania WT 2024:
-1. Trojstránková webová stránka
-2. Využitie HTML5, CSS3 a JS
-3. Optimalizácia UX/UI
-4. Implementácia frameworku
-5. Sekcia zmien
-6. Responzívny dizajn
+Projekt spĺňa požiadavky zadania WT 2024:
+1. Implementácia React.js
+2. Responzívny dizajn
+3. Správa používateľov
+4. Bezpečnostné prvky
+5. GDPR kompatibilita
+6. Dokumentácia
 
-## 🎓 Akademické Využitie
-Projekt je vytvorený pre akademické účely a demonštruje:
-- Moderné webové technológie
-- Responzívny dizajn
-- Prístupnosť
-- Interaktívne funkcie
-
-## 📄 Licencia
+## 📝 Licencia
 Tento projekt je akademickou prácou a je chránený autorskými právami.
+
+## 🙏 Poďakovanie
+- React tímu
+- Tailwind CSS tímu
+- Všetkým prispievateľom
 
 ---
 Vytvorené pre predmet Webové Technológie 2024 ❤️
