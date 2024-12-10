@@ -21,6 +21,10 @@ CREATE TABLE users (
   updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() -- Dátum a čas poslednej aktualizácie záznamu.
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `users` (`id`, `name`, `birth_year`, `country`, `email`, `password`, `phone`, `notes`, `created_at`, `updated_at`) VALUES
+(1, '0', 1968, 'Cechoslovakistan', 'test23@test.com', '$2y$10$5dtf/L6lcMPKS5jLaoz7uuujq00PYo2Ya1rcIWA74n9NvHE.zf1fW', '+666 666 666 662', '', '2024-12-10 11:54:48', '2024-12-10 11:54:48'),
+(2, '0', 2000, 'Slovakistan', 'test@test.com', '$2y$10$Dv8rp1wfA83ioJra8q0q5eGeoUeMD6hG3tSoGMEPlfpaUSlD2IGiG', '+666 666 666 666', '', '2024-12-10 11:55:35', '2024-12-10 11:55:35'),
+(3, 'Funguj Blyat', 1939, 'Kazachstan', 'test24@test.com', '$2y$10$ZR7rQA./MIVy974GunyDqeenTaJVLe1hB40DEHWdIAREP/5kk9rUC', '+666 666 666 663', '', '2024-12-10 14:10:07', '2024-12-10 14:10:07');
 -- --------------------------------------------------------
 
 -- Vytvára tabuľku `user_audit_log` na uchovávanie záznamov o zmenách v používateľských údajoch.
