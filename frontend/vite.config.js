@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost/wtp/backend',
+        target: 'http://localhost/WT/backend',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
